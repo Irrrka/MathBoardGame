@@ -1,8 +1,11 @@
 ﻿using Autofac;
+using MathGame.Services;
+using MathGame.Services.Contracts;
 using MathGame.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +18,12 @@ namespace MathGame
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<MultiplicationBy2ViewModel>();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+               .Where(t => t.Name.EndsWith("ViewModel"))
+               .AsSelf();
 
             Container = builder.Build();
         }

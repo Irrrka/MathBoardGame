@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MathGame.Data
 {
-    public class Position : BaseModel
+    public abstract class BasePositionModel : BaseModel
     {
         public int Row { get; set; }
 

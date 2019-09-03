@@ -18,15 +18,15 @@ using System.Windows.Shapes;
 namespace MathGame.Views
 {
     /// <summary>
-    /// Interaction logic for MultiplicationBy2.xaml
+    /// Interaction logic for FirstLevelView.xaml
     /// </summary>
-    public partial class MultiplicationBy2 : Page
+    public partial class FirstLevelView : Page
     {
-        public MultiplicationBy2()
+        public FirstLevelView()
         {
             InitializeComponent();
-            this.DataContext = Bootstraper.Container
-                                    .Resolve<MultiplicationBy2ViewModel>();
+            this.DataContext =
+                Bootstraper.Container.Resolve<FirstLevelViewModel>();
         }
     }
 }

@@ -1,0 +1,99 @@
+﻿<Page x:Class="MathGame.Views.FirstLevelView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MathGame.Views"
+      xmlns:c="clr-namespace:MathGame.Controls"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FirstLevelView">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding InitCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <ItemsControl Grid.Column="1" Margin="10"
+              ItemsSource="{Binding Squares}" Name="squares">
+
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="ItemsControl">
+                    <ItemsPresenter/>
+                </ControlTemplate>
+            </ItemsControl.Template>
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Width="700" Height="700" Rows="7" Columns="7" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Rectangle>
+                            <Rectangle.Style>
+                                <Style TargetType="Rectangle">
+                                    <Setter Property="Fill" Value="White"></Setter>
+
+                                    <Style.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Yellow">
+                                            <Setter Property="Fill" Value="#ffef00"></Setter>
+                                        </DataTrigger>
+                                  
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Orange">
+                                            <Setter Property="Fill" Value="#ff9a00"></Setter>
+                                        </DataTrigger>
+                                   
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Red">
+                                            <Setter Property="Fill" Value="#d40c00"></Setter>
+                                        </DataTrigger>
+                                   
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Violet">
+                                            <Setter Property="Fill" Value="#7f4fc9"></Setter>
+                                        </DataTrigger>
+                                   
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Indigo">
+                                            <Setter Property="Fill" Value="#682cbf"></Setter>
+                                        </DataTrigger>
+                                  
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Blue">
+                                            <Setter Property="Fill" Value="#00a5f9"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding Color}"
+                                            Value="Green">
+                                            <Setter Property="Fill" Value="#87c735"></Setter>
+                                        </DataTrigger>
+                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </Rectangle.Style>
+                        </Rectangle>
+
+                        <c:MathTaskView
+                            Task ="{Binding Task}">
+                        </c:MathTaskView>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+    </Grid>
+</Page>
