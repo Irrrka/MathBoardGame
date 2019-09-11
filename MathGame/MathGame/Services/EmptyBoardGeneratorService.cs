@@ -1,5 +1,6 @@
 ﻿namespace MathGame.Services
 {
+    using MathGame.Common;
     using MathGame.Data;
     using MathGame.Services.Contracts;
 
@@ -15,31 +16,31 @@
                 {
                     Square square = null;
 
-                    if ((row + col) % 7 == 0)
+                    if ((row + col) % Constants.BoardEl == 6)
                     {
                         square = new Square(row, col, "Yellow", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 1)
+                    else if ((row + col) % Constants.BoardEl == 5)
                     {
                         square = new Square(row, col, "Orange", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 2)
+                    else if ((row + col) % Constants.BoardEl == 4)
                     {
                         square = new Square(row, col, "Red", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 3)
+                    else if ((row + col) % Constants.BoardEl == 3)
                     {
                         square = new Square(row, col, "Violet", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 4)
+                    else if ((row + col) % Constants.BoardEl == 2)
                     {
                         square = new Square(row, col, "Indigo", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 5)
+                    else if ((row + col) % Constants.BoardEl == 1)
                     {
                         square = new Square(row, col, "Blue", new Empty(row, col));
                     }
-                    else if ((row + col) % 7 == 6)
+                    else if ((row + col) % Constants.BoardEl == 0)
                     {
                         square = new Square(row, col, "Green", new Empty(row, col));
                     }

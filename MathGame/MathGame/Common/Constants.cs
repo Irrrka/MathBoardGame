@@ -10,6 +10,7 @@ namespace MathGame.Common
     {
         public const int BoardRows = 7;
         public const int BoardCols = 7;
+        public const int BoardEl = 7;
 
         public const string White = "White";
         public const string Yellow = "Yellow";

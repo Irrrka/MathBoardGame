@@ -76,8 +76,10 @@
       <DependentUpon>MathTaskView.xaml</DependentUpon>
     </Compile>
     <Compile Include="RalayCommand.cs" />
+    <Compile Include="Services\Contracts\IMathRulesService.cs" />
     <Compile Include="Services\EmptyBoardGeneratorService.cs" />
     <Compile Include="Services\Contracts\IEmptyBoardGeneratorService.cs" />
+    <Compile Include="Services\MathRulesService.cs" />
     <Compile Include="ViewModels\FirstLevelViewModel.cs" />
     <Compile Include="Views\FirstLevelView.xaml.cs">
       <DependentUpon>FirstLevelView.xaml</DependentUpon>
