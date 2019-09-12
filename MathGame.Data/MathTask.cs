@@ -13,5 +13,10 @@
         public string Problem { get; set; }
 
         public string Image { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Row} {this.Col}";
+        }
     }
 }

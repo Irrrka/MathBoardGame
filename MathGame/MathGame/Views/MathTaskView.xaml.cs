@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace MathGame.Controls
+namespace MathGame.Views
 {
     /// <summary>
     /// Interaction logic for MathTaskView.xaml

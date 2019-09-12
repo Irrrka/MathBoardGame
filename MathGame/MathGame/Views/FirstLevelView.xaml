@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MathGame.Views"
-      xmlns:controls="clr-namespace:MathGame.Controls"
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -17,6 +16,7 @@
     </i:Interaction.Triggers>
 
     <Grid>
+
         <ItemsControl Grid.Column="1" Margin="10"
               ItemsSource="{Binding Squares}" Name="squares">
 
@@ -28,12 +28,12 @@
 
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Width="700" Height="700" Rows="7" Columns="7" />
+                    <UniformGrid Width="500" Height="100" Rows="1" Columns="3" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid >
                         <Rectangle>
                             <Rectangle.Style>
                                 <Style TargetType="Rectangle">
@@ -44,32 +44,35 @@
                                             Binding="{Binding Color}"
                                             Value="Yellow">
                                             <Setter Property="Fill" Value="#ffef00"></Setter>
+                                            <Setter Property="TextBlock.Text" Value="WORDS"></Setter>
                                         </DataTrigger>
-                                  
+                                       
                                         <DataTrigger
                                             Binding="{Binding Color}"
                                             Value="Orange">
                                             <Setter Property="Fill" Value="#ff9a00"></Setter>
+                                            <Setter Property="TextBlock.Text" Value="MATH"></Setter>
                                         </DataTrigger>
-                                   
+
                                         <DataTrigger
                                             Binding="{Binding Color}"
                                             Value="Red">
                                             <Setter Property="Fill" Value="#d40c00"></Setter>
+                                            <Setter Property="TextBlock.Text" Value="MEMO"></Setter>
                                         </DataTrigger>
-                                   
+
                                         <DataTrigger
                                             Binding="{Binding Color}"
                                             Value="Violet">
                                             <Setter Property="Fill" Value="#7f4fc9"></Setter>
                                         </DataTrigger>
-                                   
+
                                         <DataTrigger
                                             Binding="{Binding Color}"
                                             Value="Indigo">
                                             <Setter Property="Fill" Value="#682cbf"></Setter>
                                         </DataTrigger>
-                                  
+
                                         <DataTrigger
                                             Binding="{Binding Color}"
                                             Value="Blue">
@@ -81,13 +84,14 @@
                                             Value="Green">
                                             <Setter Property="Fill" Value="#87c735"></Setter>
                                         </DataTrigger>
-                                        
+
                                     </Style.Triggers>
                                 </Style>
                             </Rectangle.Style>
                         </Rectangle>
+                        <Image Source="{Binding Source=Images/chalk.jpg}"/>
 
-                       
+
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

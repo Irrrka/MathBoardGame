@@ -8,9 +8,9 @@ namespace MathGame.Common
 {
    public static class Constants
     {
-        public const int BoardRows = 7;
-        public const int BoardCols = 7;
-        public const int BoardEl = 7;
+        public const int BoardRows = 1;
+        public const int BoardCols = 3;
+        public const int BoardEl = 3;
 
         public const string White = "White";
         public const string Yellow = "Yellow";
@@ -21,5 +21,11 @@ namespace MathGame.Common
         public const string Blue = "Blue";
         public const string Green = "Green";
 
+        public const int memoAttempts = 3;
+        public const int pointAward = 75;
+        public const int pointLoss = 15;
+        public const int playSeconds = 1;
+        public const int peekSeconds = 3;
+        public const int openSeconds = 5;
     }
 }

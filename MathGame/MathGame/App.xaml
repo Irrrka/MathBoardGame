@@ -4,6 +4,32 @@
              xmlns:local="clr-namespace:MathGame"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+       
+        <ResourceDictionary>
+            <Style x:Key="SlideBorder" TargetType="Border">
+                <Setter Property="BorderThickness" Value="3"/>
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="false">
+                        <Setter Property="BorderBrush" Value="LimeGreen"/>
+                        <Setter Property="BorderThickness" Value="3"/>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="true">
+                        <Setter Property="BorderBrush" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <ResourceDictionary.MergedDictionaries>
+            <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+            <!-- Accent and AppTheme setting -->
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Red.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+           
     </Application.Resources>
 </Application>
