@@ -25,7 +25,7 @@ namespace MathGame.Common
         public const int pointAward = 75;
         public const int pointLoss = 15;
         public const int playSeconds = 1;
-        public const int peekSeconds = 3;
+        public const int peekSeconds = 2;
         public const int openSeconds = 5;
     }
 }

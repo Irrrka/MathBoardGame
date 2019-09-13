@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <!--<Grid.Background>
+        <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="/MathGame;component/Resources/background_image.jpg"/>
-        </Grid.Background>-->
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -21,10 +21,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="4" Foreground="Aquamarine" FontSize="72" FontFamily="Global Monospace">C# Memory Game</TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="4" Foreground="Aquamarine" FontSize="36" FontFamily="Global Monospace">Добре дошъл в приключенията на</TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="140,65,120,90" Grid.ColumnSpan="4" Foreground="Aquamarine" FontSize="36" FontFamily="Global Monospace" Grid.RowSpan="2" Width="543">Островът на сините птици</TextBlock>
         <DockPanel LastChildFill="False" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-           
-            <Button DockPanel.Dock="Top" Padding="25" Click="Play" Background="Azure" Foreground="White" FontSize="18">Start Game</Button>
+
+            <Button DockPanel.Dock="Top" Padding="25" Click="Play" Background="LightSeaGreen" Foreground="Azure" FontSize="22">Start Game</Button>
         </DockPanel>
     </Grid>
 </UserControl>

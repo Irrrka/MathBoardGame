@@ -86,7 +86,7 @@ namespace MathGame.ViewModels
                     return image.Path;
 
 
-                return "/MemoryGame;component/Resources/background_image.jpg";
+                return "/MathGame;component/Resources/back_image.jpg";
             }
         }
 

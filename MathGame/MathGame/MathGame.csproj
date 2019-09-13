@@ -154,14 +154,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\MathGame.Data\MathGame.Data.csproj">
       <Project>{4fbe6ea3-0886-4dbf-9ea1-f52417d944d8}</Project>
       <Name>MathGame.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\fishman_image.jpg" />
+    <Resource Include="Resources\Images\gabi_image.jpg" />
+    <Resource Include="Resources\Images\game_image.jpg" />
+    <Resource Include="Resources\Images\island_image.jpg" />
+    <Resource Include="Resources\Images\pirat_image.jpg" />
+    <Resource Include="Resources\Images\twoheads_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_image.jpg" />
+    <Resource Include="Resources\back_image.jpg" />
+    <Content Include="Resources\song.mp3" />
+    <Content Include="Resources\SoundEffects\card_flip.mp3" />
+    <Content Include="Resources\SoundEffects\correct_match.mp3" />
+    <Content Include="Resources\SoundEffects\incorrect_match.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
