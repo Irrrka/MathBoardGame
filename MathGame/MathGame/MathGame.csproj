@@ -77,12 +77,15 @@
     <Compile Include="Services\EmptyBoardGeneratorService.cs" />
     <Compile Include="Services\Contracts\IEmptyBoardGeneratorService.cs" />
     <Compile Include="Services\MathRulesService.cs" />
+    <Compile Include="Services\QuizSevice.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="ViewModels\FirstLevelViewModel.cs" />
     <Compile Include="ViewModels\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
     <Compile Include="ViewModels\PictureViewModel.cs" />
+    <Compile Include="ViewModels\QuestionCollectionViewModel.cs" />
+    <Compile Include="ViewModels\QuestionViewModel.cs" />
     <Compile Include="ViewModels\SlideCollectionViewModel.cs" />
     <Compile Include="ViewModels\StartMenuViewModel.cs" />
     <Compile Include="ViewModels\TimerViewModel.cs" />
@@ -94,6 +97,9 @@
     </Compile>
     <Compile Include="Views\MathTaskView.xaml.cs">
       <DependentUpon>MathTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuizView.xaml.cs">
+      <DependentUpon>QuizView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartMenuView.xaml.cs">
       <DependentUpon>StartMenuView.xaml</DependentUpon>
@@ -121,6 +127,10 @@
     <Page Include="Views\MathTaskView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\QuizView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartMenuView.xaml">
       <SubType>Designer</SubType>
@@ -162,20 +172,44 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\fishman_image.jpg" />
-    <Resource Include="Resources\Images\gabi_image.jpg" />
-    <Resource Include="Resources\Images\game_image.jpg" />
-    <Resource Include="Resources\Images\island_image.jpg" />
-    <Resource Include="Resources\Images\pirat_image.jpg" />
-    <Resource Include="Resources\Images\twoheads_image.jpg" />
+    <Resource Include="Resources\Images\fishman_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\gabi_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\game_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\island_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\pirat_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\twoheads_image.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\background_image.jpg" />
-    <Resource Include="Resources\back_image.jpg" />
-    <Content Include="Resources\song.mp3" />
-    <Content Include="Resources\SoundEffects\card_flip.mp3" />
-    <Content Include="Resources\SoundEffects\correct_match.mp3" />
-    <Content Include="Resources\SoundEffects\incorrect_match.mp3" />
+    <Resource Include="Resources\background_image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\back_image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\song.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SoundEffects\card_flip.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SoundEffects\correct_match.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SoundEffects\incorrect_match.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

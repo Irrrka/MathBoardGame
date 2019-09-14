@@ -72,7 +72,9 @@
                 <Button.Template>
                     <ControlTemplate>
                         <Border Style="{StaticResource SlideBorder}" BorderBrush="{Binding BorderBrush}">
-                            <Image Stretch="Fill" Source="{Binding SlideImage}" />
+                            <StackPanel>
+                                <Image x:Name="image" Stretch="Fill" Source="{Binding SlideImage}" /> 
+                            </StackPanel>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>

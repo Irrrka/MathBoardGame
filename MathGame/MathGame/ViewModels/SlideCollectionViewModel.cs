@@ -22,6 +22,17 @@
         private DispatcherTimer peekTimer;
         private DispatcherTimer openingTimer;
 
+        public SlideCollectionViewModel()
+        {
+            this.peekTimer = new DispatcherTimer();
+            this.peekTimer.Interval = new TimeSpan(0, 0, Constants.peekSeconds);
+            this.peekTimer.Tick += PeekTimer_Tick;
+
+            this.openingTimer = new DispatcherTimer();
+            this.openingTimer.Interval = new TimeSpan(0, 0, Constants.openSeconds);
+            this.openingTimer.Tick += OpeningTimer_Tick;
+        }
+
         //Are selected slides still being displayed
         public bool AreSlidesActive
         {
@@ -49,20 +60,7 @@
             }
         }
 
-        //Can user select a slide
-        public bool CanSelect { get; private set; }
-
-
-        public SlideCollectionViewModel()
-        {
-            this.peekTimer = new DispatcherTimer();
-            this.peekTimer.Interval = new TimeSpan(0, 0, Constants.peekSeconds);
-            this.peekTimer.Tick += PeekTimer_Tick;
-
-            this.openingTimer = new DispatcherTimer();
-            this.openingTimer.Interval = new TimeSpan(0, 0, Constants.openSeconds);
-            this.openingTimer.Tick += OpeningTimer_Tick;
-        }
+       
 
         //Create slides from images in file directory
         public void CreateSlides(string imagesPath)
@@ -88,6 +86,9 @@
             ShuffleSlides();
             OnPropertyChanged("MemorySlides");
         }
+
+        //Can user select a slide
+        public bool CanSelect { get; private set; }
 
         //Select a slide to be matched
         public void SelectSlide(PictureViewModel slide)
@@ -185,7 +186,7 @@
 
             foreach (string i in images)
             {
-                models.Add(new Image() { Id = id, Path = "/MathGame;component/" + i });
+                models.Add(new Image() { Id = id, Path = i});
                 id++;
             }
 

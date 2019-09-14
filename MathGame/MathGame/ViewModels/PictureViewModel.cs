@@ -16,6 +16,12 @@ namespace MathGame.ViewModels
         private bool isMatched;
         private bool isFailed;
 
+        public PictureViewModel(Image model)
+        {
+            this.image = model;
+            this.Id = model.Id;
+        }
+
         //Is being viewed by user
         public bool IsViewed
         {
@@ -81,9 +87,9 @@ namespace MathGame.ViewModels
             get
             {
                 if (this.IsMatched)
-                    return image.Path;
+                    return this.image.Path;
                 if (this.IsViewed)
-                    return image.Path;
+                    return this.image.Path;
 
 
                 return "/MathGame;component/Resources/back_image.jpg";
@@ -104,13 +110,6 @@ namespace MathGame.ViewModels
 
                 return Brushes.Black;
             }
-        }
-
-
-        public PictureViewModel(Image model)
-        {
-            this.image = model;
-            this.Id = model.Id;
         }
 
         //Has been matched
