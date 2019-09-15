@@ -5,7 +5,6 @@ namespace MathGame.ViewModels
 {
     public class PictureViewModel:ObservableObject
     {
-        //Model for this view
         private Image image;
 
         //Id of this slide
@@ -20,6 +19,37 @@ namespace MathGame.ViewModels
         {
             this.image = model;
             this.Id = model.Id;
+        }
+
+        //Image to be displayed
+        public string SlideImage
+        {
+            get
+            {
+                if (this.IsMatched)
+                    return this.image.Path;
+                if (this.IsViewed)
+                    return this.image.Path;
+
+
+                return "/MathGame;component/Resources/back_image.jpg";
+            }
+        }
+
+        //Brush color of border based on status
+        public Brush BorderBrush
+        {
+            get
+            {
+                if (this.IsFailed)
+                    return Brushes.Red;
+                if (this.IsMatched)
+                    return Brushes.Green;
+                if (this.IsViewed)
+                    return Brushes.Yellow;
+
+                return Brushes.Black;
+            }
         }
 
         //Is being viewed by user
@@ -81,36 +111,7 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Image to be displayed
-        public string SlideImage
-        {
-            get
-            {
-                if (this.IsMatched)
-                    return this.image.Path;
-                if (this.IsViewed)
-                    return this.image.Path;
-
-
-                return "/MathGame;component/Resources/back_image.jpg";
-            }
-        }
-
-        //Brush color of border based on status
-        public Brush BorderBrush
-        {
-            get
-            {
-                if (this.IsFailed)
-                    return Brushes.Red;
-                if (this.IsMatched)
-                    return Brushes.Green;
-                if (this.IsViewed)
-                    return Brushes.Yellow;
-
-                return Brushes.Black;
-            }
-        }
+        
 
         //Has been matched
         public void MarkMatched()

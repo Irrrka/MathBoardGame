@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MathGame.Common
+﻿namespace MathGame.Common
 {
    public static class Constants
     {
@@ -41,5 +35,8 @@ namespace MathGame.Common
         public const string a21 = "Ники, Алекс, Габи и Армандо";
         public const string a22 = "Ники, Алекс, Габи, Армандо и Зоица";
 
+        public const string q3 = "Как се казват героите, които са се грижели за птиците на Острова?";
+        public const string a31 = "Ники и Алекс";
+        public const string a32 = "Антоан и Алекс";
     }
 }

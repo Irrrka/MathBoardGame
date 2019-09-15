@@ -17,7 +17,8 @@ namespace MathGame.ViewModels
 
         public void StartNewGame()
         {
-            GameViewModel newGame = new GameViewModel();
+           //Select from dropdown
+            QuizGameViewModel newGame = new QuizGameViewModel();
             this.mainWindow.DataContext = newGame;
         }
     }

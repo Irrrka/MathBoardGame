@@ -7,14 +7,10 @@
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Threading;
 
     public class SlideCollectionViewModel:ObservableObject
     {
-        public ObservableCollection<PictureViewModel> MemorySlides { get; private set; }
-
         private PictureViewModel SelectedSlide1;
         private PictureViewModel SelectedSlide2;
 
@@ -32,6 +28,8 @@
             this.openingTimer.Interval = new TimeSpan(0, 0, Constants.openSeconds);
             this.openingTimer.Tick += OpeningTimer_Tick;
         }
+
+        public ObservableCollection<PictureViewModel> MemorySlides { get; private set; }
 
         //Are selected slides still being displayed
         public bool AreSlidesActive
@@ -61,7 +59,6 @@
         }
 
        
-
         //Create slides from images in file directory
         public void CreateSlides(string imagesPath)
         {
@@ -83,7 +80,7 @@
                 newSlideMatch.PeekAtImage();
             }
 
-            ShuffleSlides();
+            this.ShuffleSlides();
             OnPropertyChanged("MemorySlides");
         }
 
@@ -199,7 +196,7 @@
             //Randomizing slide indexes
             var rnd = new Random();
             //Shuffle memory slides
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < (MemorySlides.Count * MemorySlides.Count); i++)
             {
                 MemorySlides.Reverse();
                 MemorySlides.Move(rnd.Next(0, MemorySlides.Count), rnd.Next(0, MemorySlides.Count));

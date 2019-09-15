@@ -21,7 +21,7 @@ namespace MathGame.ViewModels
             {
                 return this.matchAttempts;
             }
-            private set
+            internal set
             {
                 this.matchAttempts = value;
                 OnPropertyChanged();
