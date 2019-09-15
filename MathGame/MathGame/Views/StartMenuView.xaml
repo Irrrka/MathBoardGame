@@ -27,8 +27,8 @@
             <ComboBox DockPanel.Dock="Top" x:Name="categoryBox" FontSize="20" Background="Orange" Foreground="DarkBlue" FontStyle="Italic" FontFamily="Georgia">
                 <ComboBox.Items>
                     <ComboBoxItem IsEnabled="False" IsSelected="True">Избери игра</ComboBoxItem>
-                    <ComboBoxItem>МЕМОРИ</ComboBoxItem>
-                    <ComboBoxItem>КУИЗ</ComboBoxItem>
+                    <ComboBoxItem Content="МЕМОРИ"></ComboBoxItem>
+                    <ComboBoxItem Content="КУИЗ"></ComboBoxItem>
                 </ComboBox.Items>
             </ComboBox>
             <Button DockPanel.Dock="Top" Padding="25" Margin="10" Click="Play" Background="LightSeaGreen" Foreground="Orange" FontSize="22" FontStyle="Italic" FontFamily="Georgia">СТАРТ</Button>

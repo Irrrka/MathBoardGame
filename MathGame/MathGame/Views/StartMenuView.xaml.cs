@@ -17,7 +17,7 @@
         private void Play(object sender, RoutedEventArgs e)
         {
             var startMenu = DataContext as StartMenuViewModel;
-            startMenu.StartNewGame();
+            startMenu.StartNewGame(categoryBox.SelectedIndex);
         }
 
         private void About(object sender, RoutedEventArgs e)
@@ -27,7 +27,7 @@
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            Window.GetWindow(this).Close();
         }
     }
 }

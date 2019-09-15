@@ -31,8 +31,8 @@
             option1.IsChecked = false;
             option2.IsChecked = false;
 
-            option1.Foreground = Brushes.White;
-            option2.Foreground = Brushes.White;
+            option1.Foreground = Brushes.Aquamarine;
+            option2.Foreground = Brushes.Aquamarine;
         }
 
         private void CurrentOptions()
@@ -43,6 +43,7 @@
 
         private void CurrentQuestion()
         {
+            
             string currQ = "Как се казваш?";
             currQuestion.Text = currQ;
 

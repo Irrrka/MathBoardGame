@@ -3,7 +3,7 @@
     using MathGame.Common;
     using System;
 
-    public class MemoryGameViewModel : ObservableObject
+    public class MemoryGameViewModel : GameViewModel
     {
         public MemoryGameViewModel()
         {

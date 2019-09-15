@@ -41,7 +41,7 @@
             </StackPanel>
             <Grid>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="281" Margin="170,40,0,0" VerticalAlignment="Top" Width="430">
-                    <TextBlock x:Name="currQuestion" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Margin="-1" Foreground="White" Background="#A50C0C0C"/>
+                    <TextBlock x:Name="currQuestion" TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="Aquamarine" Background="#A50C0C0C"/>
                 </Border>
                 <Grid HorizontalAlignment="Left" Height="50" Margin="255,326,0,0" VerticalAlignment="Top" Width="272" RenderTransformOrigin="0.514,0.278">
                     <Grid.ColumnDefinitions>
@@ -52,12 +52,12 @@
                         <RowDefinition Height="50*"/>
                         <RowDefinition Height="51*"/>
                     </Grid.RowDefinitions>
-                    <RadioButton x:Name="option1" Content="Отговор А" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsEnabled="True" Background="White" Grid.RowSpan="2"/>
-                    <RadioButton x:Name="option2" Content="Отговор B" HorizontalAlignment="Right" Margin="0,10,21,0" VerticalAlignment="Top" IsEnabled="True" Background="White" Grid.Column="1" Grid.RowSpan="2"/>
+                    <RadioButton x:Name="option1" Content="Отговор А" FontSize="18" Foreground="Aquamarine" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsEnabled="True" Background="White" Grid.RowSpan="2"/>
+                    <RadioButton x:Name="option2" Content="Отговор B" FontSize="18" Foreground="Aquamarine" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" IsEnabled="True" Background="White" Grid.Column="1" Grid.RowSpan="2"/>
                 </Grid>
-                <Button x:Name="Next" Content="Следващ" HorizontalAlignment="Left" Margin="255,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Next_Click" Background="Orange" Foreground="DarkBlue"/>
-                <Button x:Name="ShowAnswer" Content="Отговор" HorizontalAlignment="Left" Margin="350,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
-                <Button x:Name="Cancel" Content="Назад" HorizontalAlignment="Left" Margin="445,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
+                <Button x:Name="Next" Content="ВЪПРОС" HorizontalAlignment="Left" Margin="255,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Next_Click" Background="Orange" Foreground="DarkBlue"/>
+                <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
+                <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,381,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
             </Grid>
         </Grid>
     </DockPanel>

@@ -3,7 +3,7 @@
     using MathGame.Common;
     using System;
 
-    public class QuizGameViewModel : ObservableObject
+    public class QuizGameViewModel : GameViewModel
     {
         
         public QuizViewModel Quiz { get; set; }
@@ -22,6 +22,7 @@
             this.GameInfo = new GameInfoViewModel();
 
             this.GameInfo.ClearInfo();
+            //this.GameInfo.MatchAttempts = this.Quiz.Quiz.Count*2;
             this.GameInfo.MatchAttempts = 100;
 
             Timer.Start();

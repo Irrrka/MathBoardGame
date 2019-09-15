@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MathGame.ViewModels.GameViewModel;
 
 namespace MathGame.ViewModels
 {
@@ -15,10 +16,23 @@ namespace MathGame.ViewModels
             SoundManager.PlayBackgroundMusic();
         }
 
-        public void StartNewGame()
+        public void StartNewGame(int gameIndex)
         {
-           //Select from dropdown
-            QuizGameViewModel newGame = new QuizGameViewModel();
+            GameType game = (GameType)gameIndex;
+            var gameString = game.ToString().ToLower();
+            GameViewModel newGame = null;
+            //TODO Reflection
+            var memoryGameName = (nameof(MemoryGameViewModel)).ToLower();
+            var quizGameName = (nameof(QuizGameViewModel)).ToLower();
+            if (memoryGameName.Contains(gameString))
+            {
+                newGame = new MemoryGameViewModel();
+            }
+            if(quizGameName.Contains(gameString))
+            {
+                newGame = new QuizGameViewModel();
+            }
+
             this.mainWindow.DataContext = newGame;
         }
     }
