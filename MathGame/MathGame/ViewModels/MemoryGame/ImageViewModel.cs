@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace MathGame.ViewModels
 {
-    public class PictureViewModel:ObservableObject
+    public class ImageViewModel:NotifyPropertyChanged
     {
         private Image image;
 
@@ -15,7 +15,7 @@ namespace MathGame.ViewModels
         private bool isMatched;
         private bool isFailed;
 
-        public PictureViewModel(Image model)
+        public ImageViewModel(Image model)
         {
             this.image = model;
             this.Id = model.Id;

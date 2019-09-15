@@ -10,13 +10,13 @@
             this.SetupGame();
         }
 
-        public SlideCollectionViewModel Slides { get; set; }
+        public ImageCollectionViewModel Slides { get; set; }
         public GameInfoViewModel GameInfo { get; set; }
         public TimerViewModel Timer { get; set; }
 
         private void SetupGame()
         {
-          this.Slides = new SlideCollectionViewModel();
+          this.Slides = new ImageCollectionViewModel();
           this.Timer = new TimerViewModel(new TimeSpan(0, 0, Constants.playSeconds));
           this.GameInfo = new GameInfoViewModel();
 
@@ -40,7 +40,7 @@
         {
             if (this.Slides.CanSelect)
             {
-                var selected = slide as PictureViewModel;
+                var selected = slide as ImageViewModel;
                 this.Slides.SelectSlide(selected);
             }
 

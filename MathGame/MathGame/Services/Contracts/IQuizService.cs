@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
-    public interface IQuizSevice
+    public interface IQuizService
     {
         List<QuizQuestion> GenerateQuizQuestions();
 

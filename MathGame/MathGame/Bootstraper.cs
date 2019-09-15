@@ -4,6 +4,7 @@ using MathGame.Services.Contracts;
 using MathGame.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -24,6 +25,9 @@ namespace MathGame
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                .Where(t => t.Name.EndsWith("ViewModel"))
                .AsSelf();
+
+            CultureInfo bgCulture = new CultureInfo("bg-BG");
+            CultureInfo invC = CultureInfo.InvariantCulture;
 
             Container = builder.Build();
         }

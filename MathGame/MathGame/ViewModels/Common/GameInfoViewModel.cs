@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace MathGame.ViewModels
 {
-    public class GameInfoViewModel : ObservableObject
+    public class GameInfoViewModel : NotifyPropertyChanged
     {
         private int matchAttempts;
         private int scores;

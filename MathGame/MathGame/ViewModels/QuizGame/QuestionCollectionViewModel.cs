@@ -4,31 +4,30 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MathGame.ViewModels
 {
-    public class QuizViewModel:ObservableObject
+    public class QuestionCollectionViewModel : NotifyPropertyChanged
     {
+        private readonly IQuizService quizService;
         private List<QuizQuestion> quiz;
-        private IQuizSevice quizService;
         private ICommand quizQuestionsCommand;
         private ICommand createQuizCommand;
 
-        
+
         //Question status
         private bool isAnswered;
         private bool isCorrect;
         private bool isFailed;
 
-        public QuizViewModel(IQuizSevice quizService)
+        public QuestionCollectionViewModel(IQuizService quizService)
         {
             this.Quiz = new ObservableCollection<QuestionViewModel>();
             this.quizService = quizService;
         }
-        public QuizViewModel()
+
+        public QuestionCollectionViewModel()
         {
         }
 
@@ -39,17 +38,17 @@ namespace MathGame.ViewModels
 
 
 
-        public ICommand QuizQuestionsCommand
-        {
-            get
-            {
-                if (this.quizQuestionsCommand == null)
-                {
-                    this.quizQuestionsCommand = new RelayCommand<object>(QuizQuestions);
-                }
-                return this.quizQuestionsCommand;
-            }
-        }
+        //public ICommand QuizQuestionsCommand
+        //{
+        //    get
+        //    {
+        //        if (this.quizQuestionsCommand == null)
+        //        {
+        //            this.quizQuestionsCommand = new RelayCommand<object>(QuizQuestions);
+        //        }
+        //        return this.quizQuestionsCommand;
+        //    }
+        //}
 
         public ICommand CreateQuizCommand
         {
@@ -63,13 +62,15 @@ namespace MathGame.ViewModels
             }
         }
 
-        public void QuizQuestions(object data)
+        private List<QuizQuestion> QuizQuestions()
         {
             this.quiz = this.quizService.GenerateQuizQuestions();
+            return this.quiz;
         }
 
-        public void CreateQuiz(object data)
+        public void CreateQuiz(object data = null)
         {
+            this.quiz = this.QuizQuestions();
             var temp = this.quizService.CreateQuiz(this.quiz);
 
             foreach (var question in temp)
@@ -108,7 +109,6 @@ namespace MathGame.ViewModels
         //    }
         //}
 
-        //Are the selected slides a match
 
         public bool CheckIfCorrect()
         {

@@ -23,5 +23,12 @@
             var button = sender as Button;
             game.ClickedSlide(button.DataContext);
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Window startScreen = new MainWindow();
+            startScreen.Show();
+            Window.GetWindow(this).Close();
+        }
     }
 }

@@ -4,7 +4,7 @@
     using System;
     using System.Windows.Threading;
 
-    public class TimerViewModel:ObservableObject
+    public class TimerViewModel:NotifyPropertyChanged
     {
         private DispatcherTimer playedTimer;
         private TimeSpan timePlayed;

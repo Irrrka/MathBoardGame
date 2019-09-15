@@ -9,16 +9,16 @@
     using System.Linq;
     using System.Windows.Threading;
 
-    public class SlideCollectionViewModel:ObservableObject
+    public class ImageCollectionViewModel:NotifyPropertyChanged
     {
-        private PictureViewModel SelectedSlide1;
-        private PictureViewModel SelectedSlide2;
+        private ImageViewModel SelectedSlide1;
+        private ImageViewModel SelectedSlide2;
 
         //Timers for peeking at slides and initial display for memorizing
         private DispatcherTimer peekTimer;
         private DispatcherTimer openingTimer;
 
-        public SlideCollectionViewModel()
+        public ImageCollectionViewModel()
         {
             this.peekTimer = new DispatcherTimer();
             this.peekTimer.Interval = new TimeSpan(0, 0, Constants.peekSeconds);
@@ -29,7 +29,7 @@
             this.openingTimer.Tick += OpeningTimer_Tick;
         }
 
-        public ObservableCollection<PictureViewModel> MemorySlides { get; private set; }
+        public ObservableCollection<ImageViewModel> MemorySlides { get; private set; }
 
         //Are selected slides still being displayed
         public bool AreSlidesActive
@@ -63,15 +63,15 @@
         public void CreateSlides(string imagesPath)
         {
             //New list of slides
-            MemorySlides = new ObservableCollection<PictureViewModel>();
+            MemorySlides = new ObservableCollection<ImageViewModel>();
             var models = GetModelsFrom(@imagesPath);
 
             //Create slides with matching pairs from models
             for (int i = 0; i < 6; i++)
             {
                 //Create 2 matching slides
-                var newSlide = new PictureViewModel(models[i]);
-                var newSlideMatch = new PictureViewModel(models[i]);
+                var newSlide = new ImageViewModel(models[i]);
+                var newSlideMatch = new ImageViewModel(models[i]);
                 //Add new slides to collection
                 MemorySlides.Add(newSlide);
                 MemorySlides.Add(newSlideMatch);
@@ -88,7 +88,7 @@
         public bool CanSelect { get; private set; }
 
         //Select a slide to be matched
-        public void SelectSlide(PictureViewModel slide)
+        public void SelectSlide(ImageViewModel slide)
         {
             slide.PeekAtImage();
 

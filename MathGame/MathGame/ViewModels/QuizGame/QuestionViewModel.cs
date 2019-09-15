@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace MathGame.ViewModels
 {
-    public class QuestionViewModel:ObservableObject
+    public class QuestionViewModel:NotifyPropertyChanged
     {
         private QuizQuestion question;
         //need Id?

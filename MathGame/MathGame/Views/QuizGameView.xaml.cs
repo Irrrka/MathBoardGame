@@ -1,5 +1,6 @@
 ﻿namespace MathGame.Views
 {
+    using Autofac;
     using MathGame.ViewModels;
     using System.Windows;
     using System.Windows.Controls;
@@ -7,11 +8,13 @@
 
     public partial class QuizGameView : UserControl
     {
-        private int questionId = 0;
-
         public QuizGameView()
         {
             InitializeComponent();
+            this.DataContext =
+                Bootstraper.Container.Resolve<QuizGameViewModel>();
+
+            //this.FirstQuestion();
         }
 
         private void EnableRad()
@@ -43,13 +46,11 @@
 
         private void CurrentQuestion()
         {
-            
-            string currQ = "Как се казваш?";
-            currQuestion.Text = currQ;
+            //var currQuestion = this.DataContext.Quiz[this.QuestionId].Question;
+            //currQuestion.Text = currQ;
 
             CurrentOptions();
 
-            this.questionId++;
             numOfQuestion.Content = 1;
         }
 
@@ -66,7 +67,13 @@
             //game.ClickedSlide(button.DataContext);
         }
 
-        private void Next_Click(object sender, RoutedEventArgs e)
+        private void FirstQuestion()
+        {
+            CurrentQuestion();
+            EnableRad();
+            ResetRadSelection();
+        }
+            private void Next_Click(object sender, RoutedEventArgs e)
         {
             //StoreAnswer();
 
@@ -92,6 +99,9 @@
 
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
+            //var game = DataContext as QuestionCollectionViewModel;
+            //game.qui();
+
             int numOdAnswer = 2;
             switch (numOdAnswer)
             {

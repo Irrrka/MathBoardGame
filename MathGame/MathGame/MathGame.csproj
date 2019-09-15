@@ -76,25 +76,23 @@
     <Compile Include="Bootstraper.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="RalayCommand.cs" />
-    <Compile Include="Services\Contracts\IMathRulesService.cs" />
-    <Compile Include="Services\Contracts\IQuizSevice.cs" />
+    <Compile Include="Services\Contracts\IQuizService.cs" />
     <Compile Include="Services\EmptyBoardGeneratorService.cs" />
     <Compile Include="Services\Contracts\IEmptyBoardGeneratorService.cs" />
-    <Compile Include="Services\MathRulesService.cs" />
-    <Compile Include="Services\QuizSevice.cs" />
+    <Compile Include="Services\QuizService.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="ViewModels\FirstLevelViewModel.cs" />
-    <Compile Include="ViewModels\GameInfoViewModel.cs" />
-    <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\MemoryGameViewModel.cs" />
-    <Compile Include="ViewModels\ObservableObject.cs" />
-    <Compile Include="ViewModels\PictureViewModel.cs" />
-    <Compile Include="ViewModels\QuestionViewModel.cs" />
-    <Compile Include="ViewModels\QuizGameViewModel.cs" />
-    <Compile Include="ViewModels\QuizViewModel.cs" />
-    <Compile Include="ViewModels\SlideCollectionViewModel.cs" />
-    <Compile Include="ViewModels\StartMenuViewModel.cs" />
-    <Compile Include="ViewModels\TimerViewModel.cs" />
+    <Compile Include="ViewModels\Common\GameInfoViewModel.cs" />
+    <Compile Include="ViewModels\Common\GameViewModel.cs" />
+    <Compile Include="ViewModels\MemoryGame\MemoryGameViewModel.cs" />
+    <Compile Include="ViewModels\Common\NotifyPropertyChanged.cs" />
+    <Compile Include="ViewModels\MemoryGame\ImageViewModel.cs" />
+    <Compile Include="ViewModels\QuizGame\QuestionCollectionViewModel.cs" />
+    <Compile Include="ViewModels\QuizGame\QuestionViewModel.cs" />
+    <Compile Include="ViewModels\QuizGame\QuizGameViewModel.cs" />
+    <Compile Include="ViewModels\MemoryGame\ImageCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Common\StartMenuViewModel.cs" />
+    <Compile Include="ViewModels\Common\TimerViewModel.cs" />
     <Compile Include="Views\FirstLevelView.xaml.cs">
       <DependentUpon>FirstLevelView.xaml</DependentUpon>
     </Compile>
@@ -103,9 +101,6 @@
     </Compile>
     <Compile Include="Views\QuizGameView.xaml.cs">
       <DependentUpon>QuizGameView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\QuizView.xaml.cs">
-      <DependentUpon>QuizView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartMenuView.xaml.cs">
       <DependentUpon>StartMenuView.xaml</DependentUpon>
@@ -131,10 +126,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\QuizGameView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\QuizView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
