@@ -22,20 +22,17 @@
 
           this.GameInfo.ClearInfo();
 
-           //Create slides from image folder then display to be memorized
+           //TODO COMMAND
            this.Slides.CreateSlides("Resources/Images");
            this.Slides.Memorize();
 
-            //Game has started, begin count.
             this.Timer.Start();
 
-            //Slides have been updated
             OnPropertyChanged("Slides");
             OnPropertyChanged("Timer");
             OnPropertyChanged("GameInfo");
         }
 
-        //Slide has been clicked
         public void ClickedSlide(object slide)
         {
             if (this.Slides.CanSelect)
@@ -55,7 +52,6 @@
             this.GameStatus();
         }
 
-        //Status of the current game
         private void GameStatus()
         {
             if (GameInfo.MatchAttempts < 0)
@@ -72,7 +68,6 @@
             }
         }
 
-        //Restart game
         public void Restart()
         {
             SoundManager.PlayIncorrect();

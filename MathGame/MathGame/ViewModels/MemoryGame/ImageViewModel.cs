@@ -1,16 +1,14 @@
-﻿using MathGame.Data;
-using System.Windows.Media;
-
-namespace MathGame.ViewModels
+﻿namespace MathGame.ViewModels
 {
+    using MathGame.Data;
+    using System.Windows.Media;
+
     public class ImageViewModel:NotifyPropertyChanged
     {
         private Image image;
 
-        //Id of this slide
         public int Id { get; private set; }
 
-        //Slide status
         private bool isViewed;
         private bool isMatched;
         private bool isFailed;
@@ -21,7 +19,6 @@ namespace MathGame.ViewModels
             this.Id = model.Id;
         }
 
-        //Image to be displayed
         public string SlideImage
         {
             get
@@ -36,7 +33,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Brush color of border based on status
         public Brush BorderBrush
         {
             get
@@ -52,7 +48,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Is being viewed by user
         public bool IsViewed
         {
             get
@@ -67,7 +62,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Has been matched
         public bool IsMatched
         {
             get
@@ -82,7 +76,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Has failed to be matched
         public bool IsFailed
         {
             get
@@ -97,7 +90,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //User can select this slide
         public bool IsSelectable
         {
             get
@@ -111,21 +103,16 @@ namespace MathGame.ViewModels
             }
         }
 
-        
-
-        //Has been matched
         public void MarkMatched()
         {
             this.IsMatched = true;
         }
 
-        //Has failed to match
         public void MarkFailed()
         {
             this.IsFailed = true;
         }
 
-        //No longer being viewed
         public void ClosePeek()
         {
             this.IsViewed = false;
@@ -134,7 +121,6 @@ namespace MathGame.ViewModels
             OnPropertyChanged("SlideImage");
         }
 
-        //Let user view
         public void PeekAtImage()
         {
             this.IsViewed = true;

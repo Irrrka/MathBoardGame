@@ -14,7 +14,6 @@
         private ImageViewModel SelectedSlide1;
         private ImageViewModel SelectedSlide2;
 
-        //Timers for peeking at slides and initial display for memorizing
         private DispatcherTimer peekTimer;
         private DispatcherTimer openingTimer;
 
@@ -31,7 +30,6 @@
 
         public ObservableCollection<ImageViewModel> MemorySlides { get; private set; }
 
-        //Are selected slides still being displayed
         public bool AreSlidesActive
         {
             get
@@ -43,7 +41,6 @@
             }
         }
 
-        //Have all slides been matched
         public bool AllSlidesMatched
         {
             get
@@ -58,24 +55,17 @@
             }
         }
 
-       
-        //Create slides from images in file directory
         public void CreateSlides(string imagesPath)
         {
-            //New list of slides
             MemorySlides = new ObservableCollection<ImageViewModel>();
-            var models = GetModelsFrom(@imagesPath);
+            List<Image> models = GetModelsFrom(@imagesPath);
 
-            //Create slides with matching pairs from models
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < Constants.slidesToMatch; i++)
             {
-                //Create 2 matching slides
                 var newSlide = new ImageViewModel(models[i]);
                 var newSlideMatch = new ImageViewModel(models[i]);
-                //Add new slides to collection
                 MemorySlides.Add(newSlide);
                 MemorySlides.Add(newSlideMatch);
-                //Initially display images for user
                 newSlide.PeekAtImage();
                 newSlideMatch.PeekAtImage();
             }
@@ -84,10 +74,8 @@
             OnPropertyChanged("MemorySlides");
         }
 
-        //Can user select a slide
         public bool CanSelect { get; private set; }
 
-        //Select a slide to be matched
         public void SelectSlide(ImageViewModel slide)
         {
             slide.PeekAtImage();
@@ -106,7 +94,6 @@
             OnPropertyChanged("AreSlidesActive");
         }
 
-        //Are the selected slides a match
         public bool CheckIfMatched()
         {
             if (SelectedSlide1.Id == SelectedSlide2.Id)
@@ -121,7 +108,6 @@
             }
         }
 
-        //Selected slides did not match
         private void MatchFailed()
         {
             SelectedSlide1.MarkFailed();
@@ -129,7 +115,6 @@
             ClearSelected();
         }
 
-        //Selected slides matched
         private void MatchCorrect()
         {
             SelectedSlide1.MarkMatched();
@@ -137,7 +122,6 @@
             ClearSelected();
         }
 
-        //Clear selected slides
         private void ClearSelected()
         {
             SelectedSlide1 = null;
@@ -145,7 +129,6 @@
             CanSelect = false;
         }
 
-        //Reveal all unmatched slides
         public void RevealUnmatched()
         {
             foreach (var slide in MemorySlides)
@@ -159,26 +142,20 @@
             }
         }
 
-        //Hid all slides that are unmatched
         public void HideUnmatched()
         {
             this.peekTimer.Start();
         }
 
-        //Display slides for memorizing
         public void Memorize()
         {
             this.openingTimer.Start();
         }
 
-        //Get slide picture models for creating picture views
         private List<Image> GetModelsFrom(string relativePath)
         {
-            //List of models for picture slides
             var models = new List<Image>();
-            //Get all image URIs in folder
             string[] images = Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"Resources\Images"));
-            //Slide id begin at 0
             var id = 0;
 
             foreach (string i in images)
@@ -190,12 +167,9 @@
             return models;
         }
 
-        //Randomize the location of the slides in collection
         private void ShuffleSlides()
         {
-            //Randomizing slide indexes
             var rnd = new Random();
-            //Shuffle memory slides
             for (int i = 0; i < (MemorySlides.Count * MemorySlides.Count); i++)
             {
                 MemorySlides.Reverse();
@@ -203,7 +177,6 @@
             }
         }
 
-        //Close slides being memorized
         private void OpeningTimer_Tick(object sender, EventArgs e)
         {
             foreach (var slide in MemorySlides)
@@ -215,7 +188,6 @@
             this.openingTimer.Stop();
         }
 
-        //Display selected card
         private void PeekTimer_Tick(object sender, EventArgs e)
         {
             foreach (var slide in MemorySlides)

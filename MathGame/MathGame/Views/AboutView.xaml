@@ -1,0 +1,21 @@
+﻿<Page x:Class="MathGame.Views.AboutView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathGame.Views"
+        mc:Ignorable="d"
+        Title="AboutView" Height="150" Width="150">
+    <Grid>
+        <DockPanel Background="Aquamarine">
+            <TextBlock Margin="10" FontSize="10" FontFamily="Georgia" Foreground="Orange" TextAlignment="Center" TextWrapping="Wrap">
+                Тази игра е създадена по българския детски сериал &quot;Островът на Сините птици&quot;.
+                <LineBreak/>
+                Гледайте епизодите на сайта на   
+                <Hyperlink NavigateUri="https://www.bnt.bg/bg/a/ostrovt-na-sinite-ptitsi">БНТ1</Hyperlink>
+                или в 
+                <Hyperlink NavigateUri="https://www.youtube.com/channel/UCMjT0mNFtqZ23Q39XNON8Pw">YouTube</Hyperlink>.
+            </TextBlock>
+        </DockPanel>
+    </Grid>
+</Page>

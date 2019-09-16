@@ -10,9 +10,9 @@
     {
         public QuizGameView()
         {
-            InitializeComponent();
-            this.DataContext =
-                Bootstraper.Container.Resolve<QuizGameViewModel>();
+                InitializeComponent();
+                this.DataContext =
+                    Bootstraper.Container.Resolve<QuizGameViewModel>();
 
             //this.FirstQuestion();
         }

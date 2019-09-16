@@ -6,6 +6,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:MathGame"
         xmlns:viewmodels="clr-namespace:MathGame.ViewModels"
+        xmlns:viewmodelsh="clr-namespace:MathGame.ViewModels.HangmanGame"
         xmlns:views="clr-namespace:MathGame.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
@@ -17,7 +18,10 @@
             <DataTemplate DataType="{x:Type viewmodels:QuizGameViewModel}">
                 <views:QuizGameView DataContext="{Binding}"/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:StartMenuViewModel}">
+        <DataTemplate DataType="{x:Type viewmodelsh:HangmanGameViewModel}">
+            <views:HangmanGameView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:StartMenuViewModel}">
                 <views:StartMenuView DataContext="{Binding}"/>
             </DataTemplate>
         </Window.Resources>

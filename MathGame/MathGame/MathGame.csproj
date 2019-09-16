@@ -76,14 +76,18 @@
     <Compile Include="Bootstraper.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="RalayCommand.cs" />
+    <Compile Include="Services\Contracts\IHangmanService.cs" />
     <Compile Include="Services\Contracts\IQuizService.cs" />
     <Compile Include="Services\EmptyBoardGeneratorService.cs" />
     <Compile Include="Services\Contracts\IEmptyBoardGeneratorService.cs" />
+    <Compile Include="Services\HangmanService.cs" />
     <Compile Include="Services\QuizService.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="ViewModels\FirstLevelViewModel.cs" />
     <Compile Include="ViewModels\Common\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\Common\GameViewModel.cs" />
+    <Compile Include="ViewModels\HangmanGame\HangmanGameViewModel.cs" />
+    <Compile Include="ViewModels\HangmanGame\HangmanViewModel.cs" />
     <Compile Include="ViewModels\MemoryGame\MemoryGameViewModel.cs" />
     <Compile Include="ViewModels\Common\NotifyPropertyChanged.cs" />
     <Compile Include="ViewModels\MemoryGame\ImageViewModel.cs" />
@@ -93,8 +97,14 @@
     <Compile Include="ViewModels\MemoryGame\ImageCollectionViewModel.cs" />
     <Compile Include="ViewModels\Common\StartMenuViewModel.cs" />
     <Compile Include="ViewModels\Common\TimerViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FirstLevelView.xaml.cs">
       <DependentUpon>FirstLevelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HangmanGameView.xaml.cs">
+      <DependentUpon>HangmanGameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MemoryGameView.xaml.cs">
       <DependentUpon>MemoryGameView.xaml</DependentUpon>
@@ -117,7 +127,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FirstLevelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HangmanGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
