@@ -1,31 +1,17 @@
-﻿using Autofac;
-using MathGame.Services.Contracts;
-using MathGame.ViewModels;
-using MathGame.ViewModels.HangmanGame;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace MathGame.Views
+﻿namespace MathGame.Views
 {
-    /// <summary>
-    /// Interaction logic for HangmanGameView.xaml
-    /// </summary>
+    using Autofac;
+    using MathGame.ViewModels;
+    using MathGame.ViewModels.HangmanGame;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+
     public partial class HangmanGameView : UserControl
     {
         private HangmanGameViewModel game;
-        private string word;
         private List<Button> buttons;   
         private List<Label> labels;
 
@@ -45,8 +31,15 @@ namespace MathGame.Views
         
         private void PlayAgain(object sender, RoutedEventArgs e)
         {
-            var game = DataContext as MemoryGameViewModel;
+            
+            this.labels.Clear();
+            this.buttons.Clear();
+            GameGrid.Children.Clear();
+
+            var game = new HangmanGameViewModel();
             game.Restart();
+            this.GenerateLettersButtons(this.game.Alphabet);
+            this.GenerateLettersLabels(this.game.Lenght);
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)

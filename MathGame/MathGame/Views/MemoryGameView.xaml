@@ -15,7 +15,7 @@
             <StackPanel Margin="10" DockPanel.Dock="Bottom">
                 <DockPanel LastChildFill="True">
                     <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
-                    <!--<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />-->
+                    <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
                     <StackPanel Visibility="{Binding WinMessage}">
                         <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
                         <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>

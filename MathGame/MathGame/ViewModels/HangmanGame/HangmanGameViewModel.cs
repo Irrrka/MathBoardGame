@@ -150,21 +150,21 @@ namespace MathGame.ViewModels.HangmanGame
         public int[] TakeCharachter(char letter)
         {
             int[] temp = new int[this.word.Length];
-            for (int i = 0; i < word.Length; i++)
+            for (int i = 0; i < this.word.Length; i++)
             {
-                if (this.word.ToUpper()[i] == letter)
+                var targetLetter = this.word[i];
+                if (targetLetter == letter)
                 {
                     temp[i] = 1;
                 }
                 else
                 {
                     temp[i] = 0;
-                    this.stage++;
                 }
             }
                 if (temp.Count(i => i == 1) == 0)
                 {
-                    Stage++;
+                    this.Stage++;
                 }
             
 
@@ -207,8 +207,8 @@ namespace MathGame.ViewModels.HangmanGame
 
         public void Restart()
         {
-            SoundManager.PlayIncorrect();
-            SetupGame();
+
+            this.SetupGame();
         }
     }
 }

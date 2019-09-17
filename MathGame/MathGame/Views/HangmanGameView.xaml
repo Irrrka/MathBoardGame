@@ -23,7 +23,28 @@
                 <ImageBrush ImageSource="/MathGame;component/Resources/background_image.png" Stretch="UniformToFill"/>
             </DockPanel.Background>
 
-        <Label Content="{Binding Word}"/>
+            <StackPanel Margin="10" DockPanel.Dock="Bottom">
+                <DockPanel LastChildFill="True">
+                    <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
+                        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
+                        <StackPanel Visibility="{Binding WinMessage}">
+                            <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
+                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                        </StackPanel>
+                        <StackPanel Visibility="{Binding LostMessage}">
+                            <TextBlock Foreground="Tomato">ЗАГУБИ!</TextBlock>
+                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                        </StackPanel>
+                    </DockPanel>
+                    <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Left">
+                        <!--<TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                        <!--<TextBlock Text="{Binding MatchAttempts, StringFormat=Оставащи опити: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                        <!--<TextBlock Text="{Binding Timer.Time, StringFormat=Изминало време: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+
+            <Label Content="{Binding Word}"/>
             <Grid x:Name="GameGrid"></Grid>
             <Image Source="{Binding StageImage.Path}" />
 
