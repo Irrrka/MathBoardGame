@@ -9,7 +9,7 @@
       Title="RulesView">
 
     <Grid>
-        <DockPanel Background="Aquamarine">
+        <DockPanel Background="WhiteSmoke">
             <TextBlock x:Name="Rules" Margin="10" FontSize="20" FontFamily="Georgia" Foreground="Orange" TextAlignment="Center" TextWrapping="Wrap">
             </TextBlock>
         </DockPanel>

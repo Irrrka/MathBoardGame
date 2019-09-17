@@ -2,7 +2,7 @@
 
 namespace MathGame.Views
 {
-    public partial class AboutView : Page
+    public partial class AboutView
     {
         public AboutView()
         {

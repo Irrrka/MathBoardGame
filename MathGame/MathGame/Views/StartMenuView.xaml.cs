@@ -29,8 +29,8 @@
 
         private void About(object sender, RoutedEventArgs e)
         {
-            var screen = new AboutView();
-            Window.GetWindow(this).Close();
+            AboutView about = new AboutView();
+            about.Show();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
