@@ -157,8 +157,9 @@
 
         private void Rules_Click(object sender, RoutedEventArgs e)
         {
-            var startScreen = new RulesView();
-            Window.GetWindow(startScreen).Show();
+            var gamename = nameof(HangmanGameView);
+            RulesView rules = new RulesView(gamename);
+            rules.Show();
         }
     }
 }

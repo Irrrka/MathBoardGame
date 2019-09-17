@@ -171,38 +171,14 @@ namespace MathGame.ViewModels.HangmanGame
             return temp;
         }
 
-
-
-
-        //public void ClickedLetter(object letter)
-        //{
-        //    if (this.Slides.CanSelect)
-        //    {
-        //        var selected = slide as ImageViewModel;
-        //        this.Slides.SelectSlide(selected);
-        //    }
-
-        //    if (!this.Slides.AreSlidesActive)
-        //    {
-        //        if (this.Slides.CheckIfMatched())
-        //            this.GameInfo.Award(); //Correct match
-        //        else
-        //            this.GameInfo.Penalize();//Incorrect match
-        //    }
-
-        //    this.GameStatus();
-        //}
-
         private void GameStatus()
         {
-            // matchattempts >> Stage>=7
-            if (GameInfo.MatchAttempts < 0)
+            if (this.Stage >= 7)
             {
                 this.GameInfo.GameStatus(false);
                 this.StageImage = new Image();
                 this.Timer.Stop();
             }
-
         }
 
         public void Restart()

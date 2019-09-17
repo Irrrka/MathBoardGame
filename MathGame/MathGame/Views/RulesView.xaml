@@ -1,4 +1,4 @@
-﻿<Page x:Class="MathGame.Views.RulesView"
+﻿<Window x:Class="MathGame.Views.RulesView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,8 +10,8 @@
 
     <Grid>
         <DockPanel Background="Aquamarine">
-            <TextBlock x:Name="Rules" Margin="10" FontSize="10" FontFamily="Georgia" Foreground="Orange" TextAlignment="Center" TextWrapping="Wrap">
+            <TextBlock x:Name="Rules" Margin="10" FontSize="20" FontFamily="Georgia" Foreground="Orange" TextAlignment="Center" TextWrapping="Wrap">
             </TextBlock>
         </DockPanel>
     </Grid>
-</Page>
+</Window>

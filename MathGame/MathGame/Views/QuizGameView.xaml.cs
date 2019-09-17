@@ -121,5 +121,12 @@
             startScreen.Show();
             Window.GetWindow(this).Close();
         }
+
+        private void Rules_Click(object sender, RoutedEventArgs e)
+        {
+            var gamename = nameof(QuizGameView);
+            RulesView rules = new RulesView(gamename);
+            rules.Show();
+        }
     }
 }

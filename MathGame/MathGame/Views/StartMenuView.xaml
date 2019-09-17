@@ -32,8 +32,10 @@
                 </ComboBox.Items>
             </ComboBox>
             <Button DockPanel.Dock="Top" Padding="25" Margin="10" Click="Play" Background="LightSeaGreen" Foreground="Orange" FontSize="22" FontStyle="Italic" FontFamily="Georgia">СТАРТ</Button>
-            <Button DockPanel.Dock="Top" Padding="5" Click="Exit" Background="Tomato" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Margin="100,0,200,0" Height="10">ИЗХОД</Button>
-
+            <StackPanel Width="auto">
+                <Button Click="Exit" Background="Tomato" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Height="10" Content="ОТНОСНО" Width="60"/>
+                <Button Click="Exit" Background="Tomato" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Height="10" Content="ИЗХОД" Width="60"/>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </UserControl>

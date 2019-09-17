@@ -59,7 +59,7 @@
                         <TextBlock Text="{Binding CurrentOption2}" TextWrapping="WrapWithOverflow"/>
                     </RadioButton>
                 </Grid>
-                <Button x:Name="Next" Content="ВЪПРОС" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Next_Click" Background="Orange" Foreground="DarkBlue"/>
+                <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="Orange" Foreground="DarkBlue"/>
                 <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
                 <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
             </Grid>
