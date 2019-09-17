@@ -86,7 +86,6 @@
     <Compile Include="ViewModels\Common\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\Common\GameViewModel.cs" />
     <Compile Include="ViewModels\HangmanGame\HangmanGameViewModel.cs" />
-    <Compile Include="ViewModels\HangmanGame\HangmanViewModel.cs" />
     <Compile Include="ViewModels\MemoryGame\MemoryGameViewModel.cs" />
     <Compile Include="ViewModels\Common\NotifyPropertyChanged.cs" />
     <Compile Include="ViewModels\MemoryGame\ImageViewModel.cs" />
@@ -107,6 +106,9 @@
     </Compile>
     <Compile Include="Views\QuizGameView.xaml.cs">
       <DependentUpon>QuizGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RulesView.xaml.cs">
+      <DependentUpon>RulesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartMenuView.xaml.cs">
       <DependentUpon>StartMenuView.xaml</DependentUpon>
@@ -136,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\QuizGameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RulesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

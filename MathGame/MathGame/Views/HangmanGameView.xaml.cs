@@ -19,39 +19,42 @@
         public HangmanGameView()
         {
             InitializeComponent();
-            
+
             this.DataContext =
                 Bootstraper.Container.Resolve<HangmanGameViewModel>();
             this.game = this.DataContext as HangmanGameViewModel;
             this.labels = new List<Label>();
             this.buttons = new List<Button>();
-            this.GenerateLettersButtons(this.game.Alphabet);
+            //this.GenerateLettersButtons(this.game.Alphabet);
             this.GenerateLettersLabels(this.game.Lenght);
         }
         
-        private void PlayAgain(object sender, RoutedEventArgs e)
+        private void Play_Click(object sender, RoutedEventArgs e)
         {
-            
-            this.labels.Clear();
-            this.buttons.Clear();
-            GameGrid.Children.Clear();
-
-            var game = new HangmanGameViewModel();
-            game.Restart();
-            this.GenerateLettersButtons(this.game.Alphabet);
-            this.GenerateLettersLabels(this.game.Lenght);
+            this.PlayAgain();
         }
 
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-        }
+        //private void Next_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.PlayAgain();
+        //}
 
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
+            this.game.GameInfo.GameStatus(false);
+            for (int i = 0; i < this.game.Lenght; i++)
+            {
+                this.labels[i].Content = this.game.Word[i];
+            }
+            this.game.StageImage = new Data.Image() { Path = "/MathGame;component/Resources/Hangman/7.png" };
+            (sender as Button).IsEnabled = false;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            Window startScreen = new MainWindow();
+            startScreen.Show();
+            Window.GetWindow(this).Close();
         }
 
         private void GenerateLettersLabels(int lenght)
@@ -107,36 +110,55 @@
             }
         }
 
-        private void GenerateLettersButtons(char[] alphabet)
+        //private void GenerateLettersButtons(char[] alphabet)
+        //{
+        //    double bot = 0;
+        //    int count = 0;
+        //    for (int i = 0; i < alphabet.Length; i++, count++)
+        //    {
+        //        Button button = new Button();
+        //        button.FontSize = 20;
+        //        button.FontWeight = FontWeight;
+        //        button.HorizontalContentAlignment = HorizontalAlignment.Center;
+        //        button.VerticalContentAlignment = VerticalAlignment.Center;
+        //        button.Height = button.Width = 38;
+        //        button.HorizontalAlignment = HorizontalAlignment.Left;
+        //        button.VerticalAlignment = VerticalAlignment.Bottom;
+
+        //        button.Content = alphabet[i].ToString();
+
+        //        if ((count + 1) * button.Width > GameGrid.Width)
+        //        {
+        //            count = 0;
+        //            bot += button.Height;
+        //        }
+
+        //        button.Margin = new Thickness(count * button.Width, 0, 0, bot);
+        //        button.Click += new RoutedEventHandler(Letter_Click);
+
+        //        this.buttons.Add(button);
+
+        //        GameGrid.Children.Add(button);
+        //    }
+        //}
+
+        private void PlayAgain()
         {
-            double bot = 0;
-            int count = 0;
-            for (int i = 0; i < alphabet.Length; i++, count++)
-            {
-                Button button = new Button();
-                button.FontSize = 20;
-                button.FontWeight = FontWeight;
-                button.HorizontalContentAlignment = HorizontalAlignment.Center;
-                button.VerticalContentAlignment = VerticalAlignment.Center;
-                button.Height = button.Width = 38;
-                button.HorizontalAlignment = HorizontalAlignment.Left;
-                button.VerticalAlignment = VerticalAlignment.Bottom;
+            this.labels.Clear();
+            this.buttons.Clear();
+            GameGrid.Children.Clear();
 
-                button.Content = alphabet[i].ToString();
+            this.DataContext =
+                Bootstraper.Container.Resolve<HangmanGameViewModel>();
+            game.Restart();
+            //this.GenerateLettersButtons(this.game.Alphabet);
+            this.GenerateLettersLabels(this.game.Lenght);
+        }
 
-                if ((count + 1) * button.Width > GameGrid.Width)
-                {
-                    count = 0;
-                    bot += button.Height;
-                }
-
-                button.Margin = new Thickness(count * button.Width, 0, 0, bot);
-                button.Click += new RoutedEventHandler(Letter_Click);
-
-                this.buttons.Add(button);
-
-                GameGrid.Children.Add(button);
-            }
+        private void Rules_Click(object sender, RoutedEventArgs e)
+        {
+            var startScreen = new RulesView();
+            Window.GetWindow(startScreen).Show();
         }
     }
 }

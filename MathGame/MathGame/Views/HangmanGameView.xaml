@@ -5,10 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MathGame.Views"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+
         <!--<i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding GenerateWordCommand}" />
@@ -18,35 +17,89 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>-->
 
+    <UserControl.Resources>
+        <DataTemplate x:Key="alphabetTemplate">
+            <Button FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="auto"  Click="Letter_Click" Content="{Binding}">
+                <Button.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Button.LayoutTransform>
+            </Button>
+        </DataTemplate>
+        
+        <!--<DataTemplate x:Key="wordLabelsTemplate">
+            <Label 
+                BorderBrush="DarkBlue"
+                BorderThickness="1,1,1,1"
+                FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Content=" ">
+                
+                <Label.LayoutTransform>
+                            <RotateTransform Angle="90"/>
+                        </Label.LayoutTransform>
+                --><!--</Border>--><!--
+               
+            </Label>
+        </DataTemplate>-->
+    </UserControl.Resources>
+    <Grid>
         <DockPanel>
             <DockPanel.Background>
                 <ImageBrush ImageSource="/MathGame;component/Resources/background_image.png" Stretch="UniformToFill"/>
             </DockPanel.Background>
 
-            <StackPanel Margin="10" DockPanel.Dock="Bottom">
-                <DockPanel LastChildFill="True">
-                    <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
-                        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
-                        <StackPanel Visibility="{Binding WinMessage}">
-                            <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
-                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                        </StackPanel>
-                        <StackPanel Visibility="{Binding LostMessage}">
-                            <TextBlock Foreground="Tomato">ЗАГУБИ!</TextBlock>
-                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+            <Grid>
+                <StackPanel Margin="10" DockPanel.Dock="Bottom">
+                    <DockPanel LastChildFill="False">
+                        <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
+                            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
+                            <StackPanel Visibility="{Binding WinMessage}">
+                                <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
+                                <Button Padding="10" Background="#FF151515" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                            </StackPanel>
+                            <StackPanel Visibility="{Binding LostMessage}">
+                                <TextBlock Foreground="MediumAquamarine">ЗАГУБИ!</TextBlock>
+                                <Button Padding="10" Background="#FF151515" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                            </StackPanel>
+                        </DockPanel>
+                        <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Left">
+                            <Label x:Name="numOfQuestion" Content="Натисни Въпрос, за да започнеш" Width="100" Foreground="Aquamarine" Height="10"/>
+                            <TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />
                         </StackPanel>
                     </DockPanel>
-                    <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Left">
-                        <!--<TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />-->
-                        <!--<TextBlock Text="{Binding MatchAttempts, StringFormat=Оставащи опити: {0}}" Foreground="Aquamarine" FontSize="20" />-->
-                        <!--<TextBlock Text="{Binding Timer.Time, StringFormat=Изминало време: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                </StackPanel>
+                <Grid>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="281" Margin="170,40,0,0" VerticalAlignment="Top" Width="430">
+                        <Image Source="{Binding StageImage.Path}" />
+                    </Border>
+
+                    <StackPanel Width="auto">
+                        <ListView ItemTemplate="{StaticResource alphabetTemplate}" ItemsSource="{Binding Path=Alphabet}">
+                            <ListView.LayoutTransform>
+                                <RotateTransform Angle="-90"/>
+                            </ListView.LayoutTransform>
+                        </ListView>
                     </StackPanel>
-                </DockPanel>
-            </StackPanel>
+
+                    <!--<StackPanel Height="20">
+                        <ListView ItemTemplate="{StaticResource wordLabelsTemplate}" ItemsSource="{Binding Path=Word}">
+                            <ListView.LayoutTransform>
+                                <RotateTransform Angle="-90"/>
+                            </ListView.LayoutTransform>
+                        </ListView>
+                    </StackPanel>-->
+
+                    <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="Orange" Foreground="DarkBlue"/>
+                    <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
+                    <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
+                </Grid>
+                <Grid Background="AntiqueWhite" Width="auto" Margin="0,330,0,100" HorizontalAlignment="Center" x:Name="GameGrid">
+                </Grid>
+            </Grid>
 
             <Label Content="{Binding Word}"/>
-            <Grid x:Name="GameGrid"></Grid>
-            <Image Source="{Binding StageImage.Path}" />
+
+
 
         </DockPanel>
     </Grid>

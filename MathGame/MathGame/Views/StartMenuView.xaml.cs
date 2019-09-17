@@ -17,7 +17,14 @@
         private void Play(object sender, RoutedEventArgs e)
         {
             var startMenu = DataContext as StartMenuViewModel;
-            startMenu.StartNewGame(categoryBox.SelectedIndex);
+            if (categoryBox.SelectedIndex == 0)
+            {
+                MessageBox.Show("МОЛЯ, ИЗБЕРИ ИГРА");
+            }
+            else
+            {
+                startMenu.StartNewGame(categoryBox.SelectedIndex);
+            }
         }
 
         private void About(object sender, RoutedEventArgs e)

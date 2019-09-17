@@ -207,7 +207,6 @@ namespace MathGame.ViewModels.HangmanGame
 
         public void Restart()
         {
-
             this.SetupGame();
         }
     }
