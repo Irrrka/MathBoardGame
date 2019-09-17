@@ -3,7 +3,8 @@
     public enum GameType
     {
         MEMORY = 1,
-        QUIZ = 2,
+        HANGMAN = 2,
+        QUIZ = 3,
     }
 
     public class GameViewModel : NotifyPropertyChanged

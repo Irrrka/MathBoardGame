@@ -17,6 +17,9 @@ namespace MathGame.ViewModels.HangmanGame
         private ICommand generateWordCommand;
         private ICommand generateLettersCommand;
         private string word;
+        private char[] alphabet;
+        private int stage;
+
         private Image stageImage;
  
         public HangmanGameViewModel(IHangmanService hangmanService)
@@ -25,25 +28,24 @@ namespace MathGame.ViewModels.HangmanGame
             this.SetupGame();
         }
 
+        public HangmanGameViewModel()
+        {
+        }
+
         private void SetupGame()
         {
-            this.Hangman = new HangmanViewModel();
             this.Timer = new TimerViewModel(new TimeSpan(0, 0, Constants.playSeconds));
             this.GameInfo = new GameInfoViewModel();
 
-            this.Hangman.StageImage = this.Hangman.GetStageImage();
+            this.StageImage = this.GetStageImage();
             this.Timer.Start();
-
-            this.generateWordCommand = this.GenerateWordCommand;
-            this.generateLettersCommand = this.GenerateLettesrCommand;
-
-            this.Hangman = new HangmanViewModel();
+            this.GenerateWord(null);
+            this.GenerateLetters(null);
 
             OnPropertyChanged("Timer");
             OnPropertyChanged("GameInfo");
         }
 
-        public HangmanViewModel Hangman { get; private set; }
         public GameInfoViewModel GameInfo { get; set; }
         public TimerViewModel Timer { get; set; }
 
@@ -51,10 +53,10 @@ namespace MathGame.ViewModels.HangmanGame
         {
             get
             {
-                if (this.generateWordCommand == null)
-                {
+                //if (this.generateWordCommand == null)
+                //{
                     this.generateWordCommand = new RelayCommand<object>(GenerateWord);
-                }
+                //}
                 return this.generateWordCommand;
             }
         }
@@ -63,23 +65,114 @@ namespace MathGame.ViewModels.HangmanGame
         {
             get
             {
-                if (this.generateLettersCommand == null)
-                {
+                //if (this.generateLettersCommand == null)
+                //{
                     this.generateLettersCommand = new RelayCommand<object>(GenerateLetters);
-                }
+                //}
                 return this.generateLettersCommand;
             }
         }
 
         private void GenerateLetters(object data)
         {
-            this.hangmanService.ShowLetters();
+            this.alphabet = this.hangmanService.ShowLetters();
         }
 
         private void GenerateWord(object data)
         {
             this.word = this.hangmanService.GetWord();
         }
+
+        public string Word
+        {
+            get
+            {
+                return this.word;
+            }
+        }
+
+        public char[] Alphabet
+        {
+            get
+            {
+                return this.alphabet;
+            }
+        }
+
+        public int Lenght
+        {
+            get
+            {
+                return this.word.Length;
+            }
+        }
+
+        public Image StageImage
+        {
+            get
+            {
+                return this.stageImage;
+            }
+            set
+            {
+                this.stageImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Stage
+        {
+            get
+            {
+                return this.stage;
+            }
+            set
+            {
+                this.stage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Image GetStageImage()
+        {
+            string[] images = Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"Resources\Hangman"));
+
+            var image = this.StageImage = new Image() { Path = "/MathGame;component/Resources/Hangman/" + $"{this.Stage}.png" };
+
+            return image;
+        }
+
+        public bool IsGameOver()
+        {
+            return this.stage >= 7 ? true : false;
+        }
+
+        public int[] TakeCharachter(char letter)
+        {
+            int[] temp = new int[this.word.Length];
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (this.word.ToUpper()[i] == letter)
+                {
+                    temp[i] = 1;
+                }
+                else
+                {
+                    temp[i] = 0;
+                    this.stage++;
+                }
+            }
+                if (temp.Count(i => i == 1) == 0)
+                {
+                    Stage++;
+                }
+            
+
+            return temp;
+        }
+
+
+
 
         //public void ClickedLetter(object letter)
         //{
@@ -106,7 +199,7 @@ namespace MathGame.ViewModels.HangmanGame
             if (GameInfo.MatchAttempts < 0)
             {
                 this.GameInfo.GameStatus(false);
-                this.Hangman.StageImage = new Image();
+                this.StageImage = new Image();
                 this.Timer.Stop();
             }
 

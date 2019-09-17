@@ -22,7 +22,8 @@
 
         private void About(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Тази игра е създадена по българския детски сериал \"Островът на Сините птици\". \r\n Гледайте на www.bnt.bg");
+            var screen = new AboutView();
+            Window.GetWindow(this).Close();
         }
 
         private void Exit(object sender, RoutedEventArgs e)

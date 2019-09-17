@@ -9,65 +9,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <i:Interaction.Triggers>
+        <!--<i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding GenerateWordCommand}" />
             </i:EventTrigger>
             <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding GenerateLettersCommand}" />
+                <i:InvokeCommandAction Command="{Binding GenerateLettesrCommand}" />
             </i:EventTrigger>
-        </i:Interaction.Triggers>
+        </i:Interaction.Triggers>-->
 
         <DockPanel>
             <DockPanel.Background>
                 <ImageBrush ImageSource="/MathGame;component/Resources/background_image.png" Stretch="UniformToFill"/>
             </DockPanel.Background>
 
-            <Grid>
-                <StackPanel Margin="10" DockPanel.Dock="Bottom">
-                    <DockPanel LastChildFill="False">
-                        <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
-                            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
-                            <StackPanel Visibility="{Binding WinMessage}">
-                                <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
-                                <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                            </StackPanel>
-                            <StackPanel Visibility="{Binding LostMessage}">
-                                <TextBlock Foreground="MediumAquamarine">ЗАГУБИ!</TextBlock>
-                                <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                            </StackPanel>
-                        </DockPanel>
-                        <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Left">
-                            <Label x:Name="numOfQuestion" Content="Натисни Въпрос, за да започнеш" Width="100" Foreground="Aquamarine" Height="10"/>
-                            <TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />
-                        </StackPanel>
-                    </DockPanel>
-                </StackPanel>
-                <Grid>
-                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="260" Margin="170,40,0,0" VerticalAlignment="Top" Width="200">
-                        <TextBlock Text="{Binding WordToGuess}"  TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="Aquamarine" Background="#A50C0C0C"/>
-                    </Border>
-                    <Grid HorizontalAlignment="Left" Height="59" Margin="170,326,0,0" VerticalAlignment="Top" Width="430" RenderTransformOrigin="0.514,0.278">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50*"/>
-                            <RowDefinition Height="51*"/>
-                        </Grid.RowDefinitions>
-                        
-                    </Grid>
-                    <Button x:Name="Next" Content="ДУМА" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Next_Click" Background="Orange" Foreground="DarkBlue"/>
-                    <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
-                    <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
-                </Grid>
-            </Grid>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="200">
-                <Image DockPanel.Dock="Bottom" Source="{Binding Hangman.StageImage}" Stretch="Fill" Margin="-200,40,200,-41"/>
-            </Border>
-            
+        <Label Content="{Binding Word}"/>
+            <Grid x:Name="GameGrid"></Grid>
+            <Image Source="{Binding StageImage.Path}" />
+
         </DockPanel>
-        <TextBlock Text="{Binding Hangman.StageImage}"/>
     </Grid>
 </UserControl>

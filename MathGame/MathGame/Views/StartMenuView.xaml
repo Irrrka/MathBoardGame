@@ -27,6 +27,7 @@
                 <ComboBox.Items>
                     <ComboBoxItem IsEnabled="False" IsSelected="True">Избери игра</ComboBoxItem>
                     <ComboBoxItem Content="МЕМОРИ"></ComboBoxItem>
+                    <ComboBoxItem Content="БЕСИЛКА"></ComboBoxItem>
                     <ComboBoxItem Content="КУИЗ"></ComboBoxItem>
                 </ComboBox.Items>
             </ComboBox>

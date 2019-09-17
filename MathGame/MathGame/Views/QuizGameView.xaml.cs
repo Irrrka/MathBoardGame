@@ -73,7 +73,7 @@
             EnableRad();
             ResetRadSelection();
         }
-            private void Next_Click(object sender, RoutedEventArgs e)
+        private void Next_Click(object sender, RoutedEventArgs e)
         {
             //StoreAnswer();
 

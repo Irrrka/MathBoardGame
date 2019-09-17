@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathGame.ViewModels.HangmanGame;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace MathGame.ViewModels
             //TODO Reflection
             var memoryGameName = (nameof(MemoryGameViewModel)).ToLower();
             var quizGameName = (nameof(QuizGameViewModel)).ToLower();
+            var hangmanGameName = (nameof(HangmanGameViewModel)).ToLower();
             if (memoryGameName.Contains(gameString))
             {
                 newGame = new MemoryGameViewModel();
@@ -31,6 +33,10 @@ namespace MathGame.ViewModels
             if(quizGameName.Contains(gameString))
             {
                 newGame = new QuizGameViewModel();
+            }
+            if (hangmanGameName.Contains(gameString))
+            {
+                newGame = new HangmanGameViewModel();
             }
 
             this.mainWindow.DataContext = newGame;
