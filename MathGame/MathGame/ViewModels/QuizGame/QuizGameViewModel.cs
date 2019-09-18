@@ -16,9 +16,6 @@
         private ICommand createQuizCommand;
         private List<QuizQuestion> quiz;
         private int questionId;
-        private string currentQuestion;
-        private string currentOption1;
-        private string currentOption2;
 
         public ObservableCollection<QuestionViewModel> Quiz { get; set; }
         public GameInfoViewModel GameInfo { get; set; }
@@ -28,7 +25,7 @@
         {
             this.quizService = quizService;
             this.SetupGame();
-            this.quiz = QuizQuestions();
+            this.CreateQuiz();
         }
         public QuizGameViewModel()
         {
@@ -42,12 +39,38 @@
             }
             set
             {
-                this.questionId++;
+                this.questionId = value;
                 OnPropertyChanged();
             }
         }
-
-       
+        public string CurrentQuestion
+        {
+            get
+            {
+                return this.quiz[this.QuestionId].Question;
+            }
+        }
+        public string CurrentOption1
+        {
+            get
+            {
+                return this.quiz[this.QuestionId].Answer1;
+            }
+        }
+        public string CurrentOption2
+        {
+            get
+            {
+                return this.quiz[this.QuestionId].Answer2;
+            }
+        }
+        public string CorrectAnswer
+        {
+            get
+            {
+                return this.quiz[this.QuestionId].CorrectAnswer;
+            }
+        }
 
         public ICommand CreateQuizCommand
         {
@@ -66,12 +89,12 @@
             this.quiz = this.QuizQuestions();
             var temp = this.quizService.CreateQuiz(this.quiz);
 
-            foreach (var question in temp)
+            foreach (QuestionViewModel question in temp)
             {
                 this.Quiz.Add(question);
             }
 
-            this.ShuffleQuestions();
+            //this.ShuffleQuestions();
             OnPropertyChanged("Quiz");
         }
 
@@ -79,35 +102,6 @@
         {
             this.quiz = this.quizService.GenerateQuizQuestions();
             return this.quiz;
-        }
-
-        public string CurrentQuestion
-        {
-            get
-            {
-                return this.quiz[this.questionId].Question;
-            }
-        }
-        public string CurrentOption1
-        {
-            get
-            {
-                return this.quiz[this.questionId].Answer1;
-            }
-        }
-        public string CurrentOption2
-        {
-            get
-            {
-                return this.quiz[this.questionId].Answer2;
-            }
-        }
-        public string CorrectAnswer
-        {
-            get
-            {
-                return this.quiz[this.questionId].CorrectAnswer;
-            }
         }
 
         private void ShuffleQuestions()
@@ -141,8 +135,7 @@
 
         public void Restart()
         {
-            SoundManager.PlayIncorrect();
-            SetupGame();
+            this.SetupGame();
         }
 
         //Status of the current game
@@ -177,6 +170,18 @@
             //}
 
             this.GameStatus();
+        }
+
+        public void StoreAnswer(string selectedOption)
+        {
+            if (selectedOption == "OK")
+            {
+                this.QuestionId--;
+            }
+            else if (selectedOption != "OK")
+            {
+                QuizData.qaData[(this.QuestionId - 1), 4] = selectedOption;
+            }
         }
 
     }

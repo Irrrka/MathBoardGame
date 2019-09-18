@@ -20,7 +20,6 @@ namespace MathGame
                 _mediaPlayer.Play();
             }
         }
-
         public static void PlayBackgroundMusic()
         {
             _mediaPlayer.Open(new Uri(Path.Combine(Environment.CurrentDirectory, "Resources/song.mp3")));
@@ -40,6 +39,20 @@ namespace MathGame
         public static void PlayIncorrect()
         {
             PlayEffect("incorrect_match.mp3");
+        }
+
+        public static void Mute()
+        {
+            if (_mediaPlayer.IsMuted == false)
+            {
+                _mediaPlayer.IsMuted = true;
+                _mediaPlayer.Volume = 0;
+            }
+            else if (_mediaPlayer.IsMuted == true)
+            {
+                _mediaPlayer.IsMuted = false;
+                _mediaPlayer.Volume = 50;
+            }
         }
 
         private static void PlayEffect(string fileName)

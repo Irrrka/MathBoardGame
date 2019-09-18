@@ -50,22 +50,24 @@
 
             <Grid>
                 <StackPanel Margin="10" DockPanel.Dock="Bottom">
-                    <DockPanel LastChildFill="False">
-                        <DockPanel DataContext="{Binding GameInfo}" MinWidth="100" DockPanel.Dock="Bottom">
+                    <DockPanel LastChildFill="True">
+                        <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
                             <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
-                            <Grid>
+                            <Grid Margin="200,333,0,0">
                                 <StackPanel Visibility="{Binding WinMessage}">
-                                <TextBlock HorizontalAlignment="Center" Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
-                                    <Button Padding="10" Background="DarkOliveGreen" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                            </StackPanel>
-                            <StackPanel Visibility="{Binding LostMessage}">
-                                <TextBlock HorizontalAlignment="Center" Foreground="Tomato">ЗАГУБИ!</TextBlock>
-                                    <Button Padding="10" Background="DarkOliveGreen" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                            </StackPanel>
+                                    <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
+                                    <Button Padding="10" Background="#FF151515" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                                </StackPanel>
+                                <StackPanel Visibility="{Binding LostMessage}">
+                                    <TextBlock Foreground="Tomato">ЗАГУБИ!</TextBlock>
+                                    <Button Padding="10" Background="#FF151515" Click="Play_Click" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
+                                </StackPanel>
                             </Grid>
                         </DockPanel>
-                        <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Bottom">
+                        <StackPanel DataContext="{Binding GameInfo}" Width="500">
                             <!--<TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                            <!--<TextBlock Text="{Binding MatchAttempts, StringFormat=Оставащи опити: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+                            <!--<TextBlock Text="{Binding Timer.Time, StringFormat=Изминало време: {0}}" Foreground="Aquamarine" FontSize="20" />-->
                         </StackPanel>
                     </DockPanel>
                 </StackPanel>
@@ -90,9 +92,9 @@
                         </ListView>
                     </StackPanel>-->
 
-                    <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="Orange" Foreground="DarkBlue"/>
-                    <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
-                    <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
+                    <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="220,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="NavajoWhite" Foreground="DarkBlue"/>
+                    <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="320,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
+                    <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="420,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
                 </Grid>
                 <Grid Background="AntiqueWhite" Width="auto" Margin="0,330,0,100" HorizontalAlignment="Center" x:Name="GameGrid">
                 </Grid>

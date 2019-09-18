@@ -1,17 +1,11 @@
-﻿using MathGame.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-
-namespace MathGame.ViewModels
+﻿namespace MathGame.ViewModels
 {
+    using MathGame.Data;
+    using System.Windows.Media;
+
     public class QuestionViewModel:NotifyPropertyChanged
     {
         private QuizQuestion question;
-        //need Id?
 
         //Question status
         //private bool isAnswered;
@@ -49,6 +43,14 @@ namespace MathGame.ViewModels
             }
         }
 
+        public string CorrectAnswer
+        {
+            get
+            {
+                return this.question.CorrectAnswer;
+            }
+        }
+
         public Color AnswerColor
         {
             get
@@ -78,7 +80,6 @@ namespace MathGame.ViewModels
             }
         }
 
-        //Has been answered correct
         public bool IsCorrect
         {
             get
@@ -88,12 +89,10 @@ namespace MathGame.ViewModels
             private set
             {
                 this.isCorrect = value;
-                //OnPropertyChanged("SlideImage");
                 OnPropertyChanged("AnswerColor");
             }
         }
 
-        //Is being answered by user
         //public bool IsAnswered
         //{
         //    get

@@ -22,7 +22,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Center" Margin="6" Grid.ColumnSpan="4" Foreground="LightSeaGreen" FontSize="36" FontStyle="Italic" FontFamily="Georgia">Добре дошъл в приключенията на</TextBlock>
-        <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <ComboBox DockPanel.Dock="Top" x:Name="categoryBox" FontSize="20" Background="Orange" Foreground="DarkBlue" FontStyle="Italic" FontFamily="Georgia">
                 <ComboBox.Items>
                     <ComboBoxItem IsEnabled="False" IsSelected="True">Избери игра</ComboBoxItem>
@@ -31,11 +31,16 @@
                     <ComboBoxItem Content="КУИЗ"></ComboBoxItem>
                 </ComboBox.Items>
             </ComboBox>
-            <Button DockPanel.Dock="Top" Padding="25" Margin="10" Click="Play" Background="LightSeaGreen" Foreground="Orange" FontSize="22" FontStyle="Italic" FontFamily="Georgia">СТАРТ</Button>
-            <WrapPanel HorizontalAlignment="Center" Width="145" Margin="125,0,0,10">
-                <Button Click="About" Background="WhiteSmoke" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Height="10" Content="ОТНОСНО" Width="70"/>
-                <Button Click="Exit" Background="Tomato" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Height="10" Content="ИЗХОД" Width="70" HorizontalAlignment="Right"/>
+            <Button DockPanel.Dock="Top" Margin="10" Click="Play" Background="LightSeaGreen" Foreground="Orange" FontSize="22" FontStyle="Italic" FontFamily="Georgia" Height="50">СТАРТ</Button>
+            <WrapPanel Margin="114,0,115,20" HorizontalAlignment="Center" Width="171" Height="50" VerticalAlignment="Top">
+                <Button Margin="5" Click="About" Width="25" Height="10" Background="White">
+                    <Image Source="/MathGame;component/Resources/info-icon.png" Stretch="UniformToFill" Width="13"/>
+                </Button>
+                <Button  Click="Exit" Background="Tomato" Foreground="Orange" FontSize="10" FontStyle="Italic" FontFamily="Georgia" Height="10" Content="ИЗХОД" Width="100"/>
+                <Button Margin="5" Click="Mute" Width="25" Height="10">
+                    <Image Source="/MathGame;component/Resources/speaker.png" Stretch="UniformToFill"/>
+                </Button>
             </WrapPanel>
-        </DockPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

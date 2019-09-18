@@ -1,20 +1,24 @@
 ﻿namespace MathGame.Views
 {
     using Autofac;
+    using MathGame.Data;
     using MathGame.ViewModels;
+    using System;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
 
     public partial class QuizGameView : UserControl
     {
+        private QuizGameViewModel quiz;
+
         public QuizGameView()
         {
-                InitializeComponent();
-                this.DataContext =
-                    Bootstraper.Container.Resolve<QuizGameViewModel>();
-
-            //this.FirstQuestion();
+            InitializeComponent();
+            this.DataContext =
+                Bootstraper.Container.Resolve<QuizGameViewModel>();
+            this.quiz = this.DataContext as QuizGameViewModel;
+            this.FirstQuestion();
         }
 
         private void EnableRad()
@@ -40,18 +44,22 @@
 
         private void CurrentOptions()
         {
-            option1.Content = "Маринко";
-            option2.Content = "Явор";
+            option1.Content = this.quiz.CurrentOption1;
+            option2.Content = this.quiz.CurrentOption2;
         }
 
         private void CurrentQuestion()
         {
-            //var currQuestion = this.DataContext.Quiz[this.QuestionId].Question;
-            //currQuestion.Text = currQ;
+            currQuestion.Text = this.quiz.CurrentQuestion;
 
             CurrentOptions();
 
-            numOfQuestion.Content = 1;
+            //numOfQuestion.Content = this.quiz.QuestionId;
+            var tempQnum = this.quiz.QuestionId;
+            if (tempQnum < QuizData.qaData.GetLength(0))
+            {
+                this.quiz.QuestionId++;
+            }
         }
 
         private void PlayAgain(object sender, RoutedEventArgs e)
@@ -75,35 +83,43 @@
         }
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            //StoreAnswer();
+            var selectedOption = (option1.IsChecked == true
+                ? option1.Content 
+                : option2.IsChecked == true 
+                ? option2.Content 
+                : MessageBox.Show("МОЛЯ, ИЗБЕРИ ЕДИН ОТГОВОР!")).ToString();
 
-            //determines whether or not user has started the quiz by clicking the next button
-            //if (quizStart != true)
-            //{
-            //    Timer();
-            //    quizStart = true;
-            //}
+            
+            this.quiz.StoreAnswer(selectedOption);
+            var tempQ = this.quiz.QuestionId;
+            if (tempQ >= QuizData.qaData.GetLength(0))
+            {
+                this.EndQuiz();
+            }
+            else
+            {
+                this.CurrentQuestion();
+                this.EnableRad();
+                this.ResetRadSelection();
+            }
+        }
 
-            //determines if the user has reached the end of the quiz, else goes to next question
-            //if (intQuest > QuesAnsw.strQuestions.GetUpperBound(0))
-            //{
-            //    endquiz();
-            //}
-            //else
-            //{
-                CurrentQuestion();
-                EnableRad();
-                ResetRadSelection();
-            //}
+        private void EndQuiz()
+        {
+            var game = DataContext as QuizGameViewModel;
+            this.quiz.Timer.Stop();
+            Window review = new ReviewView();
+            review.Show();
+            Window.GetWindow(this).Close();
         }
 
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
-            //var game = DataContext as QuestionCollectionViewModel;
-            //game.qui();
 
-            int numOdAnswer = 2;
-            switch (numOdAnswer)
+            string answer = this.quiz.Quiz[this.quiz.QuestionId-1].CorrectAnswer;
+            int numOfAnswer = answer == this.quiz.Quiz[this.quiz.QuestionId - 1].Answer1 ? 1 : 2;
+
+            switch (numOfAnswer)
             {
                 case 1:
                     option1.Foreground = Brushes.Orange;
@@ -112,7 +128,7 @@
                     option2.Foreground = Brushes.Orange;
                     break;
             }
-            DisableRad();
+            //this.DisableRad();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -128,5 +144,6 @@
             RulesView rules = new RulesView(gamename);
             rules.Show();
         }
+
     }
 }

@@ -8,11 +8,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding CreateQuizCommand}" />
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
 
     <DockPanel>
         <DockPanel.Background>
@@ -20,7 +20,7 @@
         </DockPanel.Background>
 
         <Grid>
-            <StackPanel Margin="10" DockPanel.Dock="Bottom">
+            <!--<StackPanel Margin="10">
                 <DockPanel LastChildFill="False">
                     <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
                         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
@@ -33,35 +33,42 @@
                             <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
                         </StackPanel>
                     </DockPanel>
-                    <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Left">
-                        <Label x:Name="numOfQuestion" Content="Натисни Въпрос, за да започнеш" Width="100" Foreground="Aquamarine" Height="10"/>
-                        <TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />
+                    <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Bottom">
+                        -->
+            <!--<Label x:Name="numOfQuestion" Width="100" Foreground="Aquamarine" Height="10"/>-->
+            <!--<TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />-->
+            <!--
                     </StackPanel>
                 </DockPanel>
-            </StackPanel>
+            </StackPanel>-->
+
             <Grid>
-                <Border BorderThickness="1" HorizontalAlignment="Left" Height="281" Margin="170,40,0,0" VerticalAlignment="Top" Width="430">
-                    <TextBlock Text="{Binding CurrentQuestion}"  TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="Aquamarine" Background="#A50C0C0C"/>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="245" Margin="125,45,0,0" VerticalAlignment="Top" Width="555">
+                    <TextBlock x:Name="currQuestion" Text="{Binding CurrentQuestion}"  TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="DarkBlue" Background="NavajoWhite" Margin="0,0,0,-10"/>
                 </Border>
-                <Grid HorizontalAlignment="Left" Height="59" Margin="170,326,0,0" VerticalAlignment="Top" Width="430" RenderTransformOrigin="0.514,0.278">
+                <Grid HorizontalAlignment="Left" Height="91" Margin="125,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.278" Width="665">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="51*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <RadioButton x:Name="option1" FontSize="18" Foreground="Aquamarine" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" IsEnabled="True" Background="White">
-                        <TextBlock Text="{Binding CurrentOption1}" TextWrapping="WrapWithOverflow"/>
+                    <!--<Border>-->
+                    <RadioButton x:Name="option1" FontSize="20" IsEnabled="True" Background="White" Height="91">
+                        <TextBlock Text="{Binding CurrentOption1}" TextWrapping="Wrap" Width="278" TextAlignment="Left" TextBlock.FontFamily="Georgia" FontSize="20" FontStyle="Italic" Foreground="DarkBlue"/>
                     </RadioButton>
-                    <RadioButton x:Name="option2" FontSize="18" Foreground="Aquamarine" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" IsEnabled="True" Background="White" Grid.Column="1">
-                        <TextBlock Text="{Binding CurrentOption2}" TextWrapping="WrapWithOverflow"/>
+                    <!--</Border>
+                    <Border>-->
+                    <RadioButton x:Name="option2" FontSize="20" IsEnabled="True" Background="White" Height="91" Grid.Column="1" Margin="0,0,0,0">
+                        <TextBlock Text="{Binding CurrentOption2}" TextWrapping="Wrap" TextAlignment="Left" TextBlock.FontFamily="Georgia" FontSize="20" FontStyle="Italic" Foreground="DarkBlue"/>
                     </RadioButton>
+                    <!--</Border>-->
                 </Grid>
-                <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="255,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="Orange" Foreground="DarkBlue"/>
-                <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="350,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
-                <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="445,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
+                <Button x:Name="Rules" Content="ПРАВИЛА" HorizontalAlignment="Left" Margin="220,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Rules_Click" Background="NavajoWhite" Foreground="DarkBlue"/>
+                <Button x:Name="Next" Content="СЛЕДВАЩ" HorizontalAlignment="Left" Margin="320,390,0,0" VerticalAlignment="Top" Width="90" Height="50" Click="Next_Click" Background="Orange" Foreground="DarkBlue"/>
+                <Button x:Name="ShowAnswer" Content="ОТГОВОР" HorizontalAlignment="Left" Margin="420,390,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="ShowAnswer_Click" Background="LightGreen" Foreground="DarkBlue"/>
+                <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="420,415,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
             </Grid>
         </Grid>
     </DockPanel>

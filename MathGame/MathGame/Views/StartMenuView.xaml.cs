@@ -37,5 +37,10 @@
         {
             Window.GetWindow(this).Close();
         }
+
+        private void Mute(object sender, RoutedEventArgs e)
+        {
+            SoundManager.Mute();
+        }
     }
 }

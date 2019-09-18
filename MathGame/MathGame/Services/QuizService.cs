@@ -36,8 +36,8 @@
             //    //questions = JsonConvert.DeserializeObject<List<QuizQuestion>>(json);
             //}
 
-            var data = new QuizData();
-            var args = data.qaData;
+            //var data = new QuizData();
+            var args = QuizData.qaData;
             for (int i = 0; i < args.GetLength(0); i++)
             {
                 questions.Add

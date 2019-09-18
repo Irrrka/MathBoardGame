@@ -6,7 +6,7 @@ namespace MathGame.Data
 {
     public class QuizData : BaseModel
     {
-        public string[,] qaData =
+        public static string[,] qaData =
         {
             {"Как се казва Островът от сериала?", "Пиратският остров", "Островът на сините птици", "Островът на сините птици", String.Empty},
             {"Кои са децата, които достигат Острова?", "Ники, Алекс, Габи и Армандо", "Ники, Алекс, Габи, Армандо и Зоица", "Ники, Алекс, Габи и Армандо", String.Empty},

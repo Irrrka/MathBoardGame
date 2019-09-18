@@ -25,7 +25,6 @@
             this.game = this.DataContext as HangmanGameViewModel;
             this.labels = new List<Label>();
             this.buttons = new List<Button>();
-            //this.GenerateLettersButtons(this.game.Alphabet);
             this.GenerateLettersLabels(this.game.Lenght);
         }
         
@@ -33,11 +32,6 @@
         {
             this.PlayAgain();
         }
-
-        //private void Next_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.PlayAgain();
-        //}
 
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
@@ -109,38 +103,6 @@
                 (sender as Button).IsEnabled = false;
             }
         }
-
-        //private void GenerateLettersButtons(char[] alphabet)
-        //{
-        //    double bot = 0;
-        //    int count = 0;
-        //    for (int i = 0; i < alphabet.Length; i++, count++)
-        //    {
-        //        Button button = new Button();
-        //        button.FontSize = 20;
-        //        button.FontWeight = FontWeight;
-        //        button.HorizontalContentAlignment = HorizontalAlignment.Center;
-        //        button.VerticalContentAlignment = VerticalAlignment.Center;
-        //        button.Height = button.Width = 38;
-        //        button.HorizontalAlignment = HorizontalAlignment.Left;
-        //        button.VerticalAlignment = VerticalAlignment.Bottom;
-
-        //        button.Content = alphabet[i].ToString();
-
-        //        if ((count + 1) * button.Width > GameGrid.Width)
-        //        {
-        //            count = 0;
-        //            bot += button.Height;
-        //        }
-
-        //        button.Margin = new Thickness(count * button.Width, 0, 0, bot);
-        //        button.Click += new RoutedEventHandler(Letter_Click);
-
-        //        this.buttons.Add(button);
-
-        //        GameGrid.Children.Add(button);
-        //    }
-        //}
 
         private void PlayAgain()
         {
