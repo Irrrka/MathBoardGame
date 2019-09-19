@@ -1,16 +1,13 @@
-﻿using MathGame.Common;
-using MathGame.Data;
-using MathGame.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-namespace MathGame.ViewModels.HangmanGame
+﻿namespace MathGame.ViewModels.HangmanGame
 {
+    using MathGame.Common;
+    using MathGame.Data;
+    using MathGame.Services.Contracts;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Input;
+
     public class HangmanGameViewModel : GameViewModel
     {
         private readonly IHangmanService hangmanService;
@@ -32,6 +29,10 @@ namespace MathGame.ViewModels.HangmanGame
         {
         }
 
+        public GameInfoViewModel GameInfo { get; set; }
+
+        public TimerViewModel Timer { get; set; }
+
         private void SetupGame()
         {
             this.Timer = new TimerViewModel(new TimeSpan(0, 0, Constants.playSeconds));
@@ -44,10 +45,8 @@ namespace MathGame.ViewModels.HangmanGame
 
             OnPropertyChanged("Timer");
             OnPropertyChanged("GameInfo");
+            OnPropertyChanged("StageImage");
         }
-
-        public GameInfoViewModel GameInfo { get; set; }
-        public TimerViewModel Timer { get; set; }
 
         public ICommand GenerateWordCommand
         {
@@ -156,17 +155,20 @@ namespace MathGame.ViewModels.HangmanGame
                 if (targetLetter == letter)
                 {
                     temp[i] = 1;
+                    this.GameInfo.Award();
                 }
                 else
                 {
                     temp[i] = 0;
                 }
             }
-                if (temp.Count(i => i == 1) == 0)
-                {
-                    this.Stage++;
-                }
-            
+            if (temp.Count(i => i == 1) == 0)
+            {
+                this.Stage++;
+                this.GameInfo.Penalize();
+            }
+
+            this.GameStatus();
 
             return temp;
         }
@@ -181,9 +183,5 @@ namespace MathGame.ViewModels.HangmanGame
             }
         }
 
-        public void Restart()
-        {
-            this.SetupGame();
-        }
     }
 }

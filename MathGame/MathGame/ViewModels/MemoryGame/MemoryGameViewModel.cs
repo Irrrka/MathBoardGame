@@ -22,11 +22,11 @@
 
           this.GameInfo.ClearInfo();
 
-           //TODO COMMAND
+           //TODO COMMAND+Service
            this.Slides.CreateSlides("Resources/Images");
            this.Slides.Memorize();
 
-            this.Timer.Start();
+           this.Timer.Start();
 
             OnPropertyChanged("Slides");
             OnPropertyChanged("Timer");
@@ -54,24 +54,23 @@
 
         private void GameStatus()
         {
-            if (GameInfo.MatchAttempts < 0)
+            if (this.GameInfo.MatchAttempts < 0)
             {
                 this.GameInfo.GameStatus(false);
                 this.Slides.RevealUnmatched();
-                this.Timer.Stop();
+                //this.Timer.Stop();
             }
 
-            if (Slides.AllSlidesMatched)
+            if (this.Slides.AllSlidesMatched)
             {
                 this.GameInfo.GameStatus(true);
-                this.Timer.Stop();
+                //this.Timer.Stop();
             }
         }
 
         public void Restart()
         {
-            SoundManager.PlayIncorrect();
-            SetupGame();
+            this.SetupGame();
         }
 
     }

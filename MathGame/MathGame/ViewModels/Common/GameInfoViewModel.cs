@@ -96,6 +96,7 @@ namespace MathGame.ViewModels
 
         public void Penalize()
         {
+            //Refactor MatchAttempts remove to memorygameVM
             this.Scores -= Constants.pointLoss;
             this.MatchAttempts--;
             SoundManager.PlayIncorrect();

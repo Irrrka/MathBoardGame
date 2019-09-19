@@ -36,12 +36,14 @@
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
             this.game.GameInfo.GameStatus(false);
+            this.game.Timer.Stop();
+            this.game.StageImage = new Data.Image() { Path = "/MathGame;component/Resources/Hangman/7.png" };
+
             for (int i = 0; i < this.game.Lenght; i++)
             {
                 this.labels[i].Content = this.game.Word[i];
             }
-            this.game.StageImage = new Data.Image() { Path = "/MathGame;component/Resources/Hangman/7.png" };
-            (sender as Button).IsEnabled = false;
+            //(sender as Button).IsEnabled = false;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -93,10 +95,12 @@
             if (this.labels.Count(l => l.Content == null) == 0)
             {
                 this.game.GameInfo.GameStatus(true);
+                //this.game.Timer.Stop();
             }
             else if (this.game.IsGameOver())
             {
                 this.game.GameInfo.GameStatus(false);
+                //this.game.Timer.Stop();
             }
             else
             {
@@ -112,8 +116,7 @@
 
             this.DataContext =
                 Bootstraper.Container.Resolve<HangmanGameViewModel>();
-            game.Restart();
-            //this.GenerateLettersButtons(this.game.Alphabet);
+
             this.GenerateLettersLabels(this.game.Lenght);
         }
 
