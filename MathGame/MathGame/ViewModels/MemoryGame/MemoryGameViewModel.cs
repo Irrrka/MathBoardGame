@@ -58,13 +58,13 @@
             {
                 this.GameInfo.GameStatus(false);
                 this.Slides.RevealUnmatched();
-                //this.Timer.Stop();
+                this.Timer.Stop();
             }
 
             if (this.Slides.AllSlidesMatched)
             {
                 this.GameInfo.GameStatus(true);
-                //this.Timer.Stop();
+                this.Timer.Stop();
             }
         }
 

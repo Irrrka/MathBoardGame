@@ -181,6 +181,14 @@
             else if (selectedOption != "OK")
             {
                 QuizData.qaData[(this.QuestionId - 1), 4] = selectedOption;
+                if (QuizData.qaData[(this.QuestionId - 1), 3]== QuizData.qaData[(this.QuestionId - 1), 4])
+                {
+                    this.GameInfo.Award();
+                }
+                else if (QuizData.qaData[(this.QuestionId - 1), 3] != QuizData.qaData[(this.QuestionId - 1), 4])
+                {
+                    this.GameInfo.Penalize();
+                }
             }
         }
 

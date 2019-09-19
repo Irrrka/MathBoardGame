@@ -77,6 +77,7 @@
 
         private void FirstQuestion()
         {
+            this.quiz.Timer.Start();
             CurrentQuestion();
             EnableRad();
             ResetRadSelection();
@@ -118,7 +119,7 @@
 
             string answer = this.quiz.Quiz[this.quiz.QuestionId-1].CorrectAnswer;
             int numOfAnswer = answer == this.quiz.Quiz[this.quiz.QuestionId - 1].Answer1 ? 1 : 2;
-
+            this.quiz.GameInfo.Penalize();
             switch (numOfAnswer)
             {
                 case 1:

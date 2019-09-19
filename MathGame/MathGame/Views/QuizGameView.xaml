@@ -20,29 +20,11 @@
         </DockPanel.Background>
 
         <Grid>
-            <!--<StackPanel Margin="10">
-                <DockPanel LastChildFill="False">
-                    <DockPanel DataContext="{Binding GameInfo}" MinWidth="200" DockPanel.Dock="Right">
-                        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding Timer.Time, StringFormat=Elapsed Time: {0}}" Foreground="#FF8AFF7E" FontSize="24" />
-                        <StackPanel Visibility="{Binding WinMessage}">
-                            <TextBlock Foreground="MediumAquamarine">ПОБЕДИ!</TextBlock>
-                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                        </StackPanel>
-                        <StackPanel Visibility="{Binding LostMessage}">
-                            <TextBlock Foreground="MediumAquamarine">ЗАГУБИ!</TextBlock>
-                            <Button Padding="10" Background="#FF151515" Click="PlayAgain" Foreground="#FFA1FFA1" FontSize="20">ИГРАЙ</Button>
-                        </StackPanel>
-                    </DockPanel>
-                    <StackPanel DataContext="{Binding GameInfo}" DockPanel.Dock="Bottom">
-                        -->
-            <!--<Label x:Name="numOfQuestion" Width="100" Foreground="Aquamarine" Height="10"/>-->
-            <!--<TextBlock Text="{Binding Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="20" />-->
-            <!--
-                    </StackPanel>
-                </DockPanel>
-            </StackPanel>-->
-
             <Grid>
+                <WrapPanel Margin="125,10,5,5" Height="auto" Width="auto">
+                    <TextBlock Margin="5" Text="{Binding Timer.Time, StringFormat=Време: {0}}" Foreground="DarkBlue" FontSize="24" />
+                    <TextBlock Margin="5" Text="{Binding GameInfo.Scores, StringFormat=Точки: {0}}" Foreground="DarkBlue" FontSize="24" />
+                </WrapPanel>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="245" Margin="125,45,0,0" VerticalAlignment="Top" Width="555">
                     <TextBlock x:Name="currQuestion" Text="{Binding CurrentQuestion}"  TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="DarkBlue" Background="NavajoWhite" Margin="0,0,0,-10"/>
                 </Border>
@@ -71,5 +53,7 @@
                 <Button x:Name="Cancel" Content="КРАЙ" HorizontalAlignment="Left" Margin="420,415,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="Cancel_Click" Background="Tomato" Foreground="DarkBlue"/>
             </Grid>
         </Grid>
+
+   
     </DockPanel>
 </UserControl>
