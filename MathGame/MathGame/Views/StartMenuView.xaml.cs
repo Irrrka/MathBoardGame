@@ -1,6 +1,10 @@
 ﻿namespace MathGame.Views
 {
+    using Autofac;
+    using MathGame.Data;
     using MathGame.ViewModels;
+    using MathGame.ViewModels.Common;
+    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -9,6 +13,7 @@
     /// </summary>
     public partial class StartMenuView : UserControl
     {
+
         public StartMenuView()
         {
             InitializeComponent();
@@ -42,5 +47,26 @@
         {
             SoundManager.Mute();
         }
+
+        #region Users
+        //private void Add_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var db = new UserViewModel();
+        //    this.DataContext = db as UserViewModel;
+        //    var name3 = Name.Text;
+        //    db.Add(name3);
+        //}
+
+        //private void GetUsers()
+        //{
+        //    var db = new UserViewModel();
+        //    this.DataContext = db as UserViewModel;
+        //    foreach (var user in db.Users)
+        //    {
+        //        users.Items.Add(user.Name);
+        //    }
+        //}
+        #endregion
+
     }
 }

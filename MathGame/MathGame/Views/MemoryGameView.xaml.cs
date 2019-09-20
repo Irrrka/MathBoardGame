@@ -1,27 +1,31 @@
 ﻿namespace MathGame.Views
 {
+    using Autofac;
     using MathGame.ViewModels;
     using System.Windows;
     using System.Windows.Controls;
 
     public partial class MemoryGameView : UserControl
     {
+        private MemoryGameViewModel game;
+
         public MemoryGameView()
         {
             InitializeComponent();
+            this.DataContext =
+                Bootstraper.Container.Resolve<MemoryGameViewModel>();
+            this.game = DataContext as MemoryGameViewModel;
         }
 
         private void PlayAgain(object sender, RoutedEventArgs e)
         {
-            var game = DataContext as MemoryGameViewModel;
-            game.Restart();
+            this.game.Restart();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var game = DataContext as MemoryGameViewModel;
             var button = sender as Button;
-            game.ClickedSlide(button.DataContext);
+            this.game.ClickedSlide(button.DataContext);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

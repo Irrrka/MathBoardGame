@@ -41,6 +41,12 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -51,6 +57,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -79,12 +86,16 @@
     <Compile Include="Services\Contracts\IHangmanService.cs" />
     <Compile Include="Services\Contracts\IMemoryService.cs" />
     <Compile Include="Services\Contracts\IQuizService.cs" />
+    <Compile Include="Services\Contracts\IUserService.cs" />
     <Compile Include="Services\HangmanService.cs" />
     <Compile Include="Services\MemoryService.cs" />
     <Compile Include="Services\QuizService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="ViewModels\Common\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\Common\GameViewModel.cs" />
+    <Compile Include="ViewModels\Common\StartViewModel.cs" />
+    <Compile Include="ViewModels\Common\UserViewModel.cs" />
     <Compile Include="ViewModels\HangmanGame\HangmanGameViewModel.cs" />
     <Compile Include="ViewModels\MemoryGame\MemoryGameViewModel.cs" />
     <Compile Include="ViewModels\Common\NotifyPropertyChanged.cs" />

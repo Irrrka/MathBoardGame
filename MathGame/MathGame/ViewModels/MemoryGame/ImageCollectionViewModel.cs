@@ -2,6 +2,7 @@
 {
     using MathGame.Common;
     using MathGame.Data;
+    using MathGame.Services.Contracts;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -16,9 +17,14 @@
 
         private DispatcherTimer peekTimer;
         private DispatcherTimer openingTimer;
+        //private readonly IMemoryService memoryService;
 
-        public ImageCollectionViewModel()
+        public ImageCollectionViewModel(
+            //IMemoryService memoryService
+            )
         {
+            //this.memoryService = memoryService;
+
             this.peekTimer = new DispatcherTimer();
             this.peekTimer.Interval = new TimeSpan(0, 0, Constants.peekSeconds);
             this.peekTimer.Tick += PeekTimer_Tick;
@@ -45,7 +51,7 @@
         {
             get
             {
-                foreach (var slide in MemorySlides)
+                foreach (var slide in this.MemorySlides)
                 {
                     if (!slide.IsMatched)
                         return false;
@@ -57,15 +63,15 @@
 
         public void CreateSlides(string imagesPath)
         {
-            MemorySlides = new ObservableCollection<ImageViewModel>();
-            List<Image> models = GetModelsFrom(@imagesPath);
+            this.MemorySlides = new ObservableCollection<ImageViewModel>();
+            List<Image> models = this.GetModelsFrom(imagesPath);
 
             for (int i = 0; i < Constants.slidesToMatch; i++)
             {
                 var newSlide = new ImageViewModel(models[i]);
                 var newSlideMatch = new ImageViewModel(models[i]);
-                MemorySlides.Add(newSlide);
-                MemorySlides.Add(newSlideMatch);
+                this.MemorySlides.Add(newSlide);
+                this.MemorySlides.Add(newSlideMatch);
                 newSlide.PeekAtImage();
                 newSlideMatch.PeekAtImage();
             }
@@ -74,20 +80,35 @@
             OnPropertyChanged("MemorySlides");
         }
 
+        public List<Image> GetModelsFrom(string relativePath)
+        {
+            var models = new List<Image>();
+            string[] images = Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"Resources\Images"));
+            var id = 0;
+
+            foreach (string i in images)
+            {
+                models.Add(new Image() { Id = id, Path = i });
+                id++;
+            }
+
+            return models;
+        }
+
         public bool CanSelect { get; private set; }
 
         public void SelectSlide(ImageViewModel slide)
         {
             slide.PeekAtImage();
 
-            if (SelectedSlide1 == null)
+            if (this.SelectedSlide1 == null)
             {
-                SelectedSlide1 = slide;
+                this.SelectedSlide1 = slide;
             }
-            else if (SelectedSlide2 == null)
+            else if (this.SelectedSlide2 == null)
             {
-                SelectedSlide2 = slide;
-                HideUnmatched();
+                this.SelectedSlide2 = slide;
+                this.HideUnmatched();
             }
 
             SoundManager.PlayCardFlip();
@@ -96,42 +117,42 @@
 
         public bool CheckIfMatched()
         {
-            if (SelectedSlide1.Id == SelectedSlide2.Id)
+            if (this.SelectedSlide1.Id == this.SelectedSlide2.Id)
             {
-                MatchCorrect();
+                this.MatchCorrect();
                 return true;
             }
             else
             {
-                MatchFailed();
+                this.MatchFailed();
                 return false;
             }
         }
 
         private void MatchFailed()
         {
-            SelectedSlide1.MarkFailed();
-            SelectedSlide2.MarkFailed();
-            ClearSelected();
+            this.SelectedSlide1.MarkFailed();
+            this.SelectedSlide2.MarkFailed();
+            this.ClearSelected();
         }
 
         private void MatchCorrect()
         {
-            SelectedSlide1.MarkMatched();
-            SelectedSlide2.MarkMatched();
-            ClearSelected();
+            this.SelectedSlide1.MarkMatched();
+            this.SelectedSlide2.MarkMatched();
+            this.ClearSelected();
         }
 
         private void ClearSelected()
         {
-            SelectedSlide1 = null;
-            SelectedSlide2 = null;
-            CanSelect = false;
+            this.SelectedSlide1 = null;
+            this.SelectedSlide2 = null;
+            this.CanSelect = false;
         }
 
         public void RevealUnmatched()
         {
-            foreach (var slide in MemorySlides)
+            foreach (var slide in this.MemorySlides)
             {
                 if (!slide.IsMatched)
                 {
@@ -152,28 +173,13 @@
             this.openingTimer.Start();
         }
 
-        private List<Image> GetModelsFrom(string relativePath)
-        {
-            var models = new List<Image>();
-            string[] images = Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"Resources\Images"));
-            var id = 0;
-
-            foreach (string i in images)
-            {
-                models.Add(new Image() { Id = id, Path = i});
-                id++;
-            }
-
-            return models;
-        }
-
         private void ShuffleSlides()
         {
             var rnd = new Random();
-            for (int i = 0; i < (MemorySlides.Count * MemorySlides.Count); i++)
+            for (int i = 0; i < (this.MemorySlides.Count * this.MemorySlides.Count); i++)
             {
-                MemorySlides.Reverse();
-                MemorySlides.Move(rnd.Next(0, MemorySlides.Count), rnd.Next(0, MemorySlides.Count));
+                this.MemorySlides.Reverse();
+                this.MemorySlides.Move(rnd.Next(0, this.MemorySlides.Count), rnd.Next(0, this.MemorySlides.Count));
             }
         }
 
@@ -182,24 +188,24 @@
             foreach (var slide in MemorySlides)
             {
                 slide.ClosePeek();
-                CanSelect = true;
+                this.CanSelect = true;
             }
-            OnPropertyChanged("AreSlidesActive");
             this.openingTimer.Stop();
+            OnPropertyChanged("AreSlidesActive");
         }
 
         private void PeekTimer_Tick(object sender, EventArgs e)
         {
-            foreach (var slide in MemorySlides)
+            foreach (var slide in this.MemorySlides)
             {
                 if (!slide.IsMatched)
                 {
                     slide.ClosePeek();
-                    CanSelect = true;
+                    this.CanSelect = true;
                 }
             }
-            OnPropertyChanged("AreSlidesActive");
             this.peekTimer.Stop();
+            OnPropertyChanged("AreSlidesActive");
         }
     }
 }

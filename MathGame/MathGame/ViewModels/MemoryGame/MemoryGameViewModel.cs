@@ -44,9 +44,9 @@
             if (!this.Slides.AreSlidesActive)
             {
                 if (this.Slides.CheckIfMatched())
-                    this.GameInfo.Award(); //Correct match
+                    this.GameInfo.Award();
                 else
-                    this.GameInfo.Penalize();//Incorrect match
+                    this.GameInfo.Penalize();
             }
 
             this.GameStatus();

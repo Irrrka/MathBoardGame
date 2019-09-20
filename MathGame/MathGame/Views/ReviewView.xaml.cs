@@ -1,4 +1,5 @@
 ﻿using MathGame.Data;
+using MathGame.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,13 @@ namespace MathGame.Views
             {
                 this.image = new Data.Image { Path = "/MathGame;component/Resources/success_image.png" };
             }
+        }
+
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+            //this.DataContext = new QuizGameView();
+
+            //Window.GetWindow(this).Close();
         }
     }
 }

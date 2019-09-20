@@ -32,7 +32,8 @@
             
            
 
-            <WrapPanel VerticalAlignment="Bottom" Height="auto" Width="180">
+            <WrapPanel VerticalAlignment="Bottom" Height="auto" Width="183">
+                <!--<Button x:Name="PlayAgain" Content="ИГРАЙ" Width="90" Height="50" Click="PlayAgain_Click" Background="LightSeaGreen" Foreground="DarkBlue"/>-->
                 <Button x:Name="Cancel" Content="НАЧАЛО" Width="90" Height="50" Click="Cancel_Click" Background="LightSeaGreen" Foreground="DarkBlue"/>
                 <Button x:Name="Exit" Content="КРАЙ" Width="90" Height="50" Click="Exit_Click" Background="Orange" Foreground="DarkBlue"/>
             </WrapPanel>

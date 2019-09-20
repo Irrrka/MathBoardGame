@@ -1,13 +1,7 @@
-﻿using MathGame.ViewModels.HangmanGame;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MathGame.ViewModels.GameViewModel;
-
-namespace MathGame.ViewModels
+﻿namespace MathGame.ViewModels
 {
+    using MathGame.ViewModels.HangmanGame;
+
     public class StartMenuViewModel
     {
         private MainWindow mainWindow;

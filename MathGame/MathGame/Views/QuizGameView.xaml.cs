@@ -10,14 +10,14 @@
 
     public partial class QuizGameView : UserControl
     {
-        private QuizGameViewModel quiz;
+        private QuizGameViewModel game;
 
         public QuizGameView()
         {
             InitializeComponent();
             this.DataContext =
                 Bootstraper.Container.Resolve<QuizGameViewModel>();
-            this.quiz = this.DataContext as QuizGameViewModel;
+            this.game = this.DataContext as QuizGameViewModel;
             this.FirstQuestion();
         }
 
@@ -44,40 +44,27 @@
 
         private void CurrentOptions()
         {
-            option1.Content = this.quiz.CurrentOption1;
-            option2.Content = this.quiz.CurrentOption2;
+            option1.Content = this.game.CurrentOption1;
+            option2.Content = this.game.CurrentOption2;
         }
 
         private void CurrentQuestion()
         {
-            currQuestion.Text = this.quiz.CurrentQuestion;
+            currQuestion.Text = this.game.CurrentQuestion;
 
             CurrentOptions();
 
             //numOfQuestion.Content = this.quiz.QuestionId;
-            var tempQnum = this.quiz.QuestionId;
+            var tempQnum = this.game.QuestionId;
             if (tempQnum < QuizData.qaData.GetLength(0))
             {
-                this.quiz.QuestionId++;
+                this.game.QuestionId++;
             }
-        }
-
-        private void PlayAgain(object sender, RoutedEventArgs e)
-        {
-            var game = DataContext as QuizGameViewModel;
-            game.Restart();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var game = DataContext as QuizGameViewModel;
-            var button = sender as Button;
-            //game.ClickedSlide(button.DataContext);
         }
 
         private void FirstQuestion()
         {
-            this.quiz.Timer.Start();
+            this.game.Timer.Start();
             CurrentQuestion();
             EnableRad();
             ResetRadSelection();
@@ -91,8 +78,8 @@
                 : MessageBox.Show("МОЛЯ, ИЗБЕРИ ЕДИН ОТГОВОР!")).ToString();
 
             
-            this.quiz.StoreAnswer(selectedOption);
-            var tempQ = this.quiz.QuestionId;
+            this.game.StoreAnswer(selectedOption);
+            var tempQ = this.game.QuestionId;
             if (tempQ >= QuizData.qaData.GetLength(0))
             {
                 this.EndQuiz();
@@ -108,7 +95,7 @@
         private void EndQuiz()
         {
             var game = DataContext as QuizGameViewModel;
-            this.quiz.Timer.Stop();
+            this.game.Timer.Stop();
             Window review = new ReviewView();
             review.Show();
             Window.GetWindow(this).Close();
@@ -117,9 +104,9 @@
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)
         {
 
-            string answer = this.quiz.Quiz[this.quiz.QuestionId-1].CorrectAnswer;
-            int numOfAnswer = answer == this.quiz.Quiz[this.quiz.QuestionId - 1].Answer1 ? 1 : 2;
-            this.quiz.GameInfo.Penalize();
+            string answer = this.game.Quiz[this.game.QuestionId-1].CorrectAnswer;
+            int numOfAnswer = answer == this.game.Quiz[this.game.QuestionId - 1].Answer1 ? 1 : 2;
+            this.game.GameInfo.Penalize();
             switch (numOfAnswer)
             {
                 case 1:

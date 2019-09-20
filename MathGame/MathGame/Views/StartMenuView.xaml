@@ -6,7 +6,16 @@
              xmlns:local="clr-namespace:MathGame.Views"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
-    <Grid>
+
+    <!--<UserControl.Resources>
+        <DataTemplate x:Key="usersItemTemplate">
+            <Button Content="{Binding Path=Name}" Width="auto" HorizontalAlignment="Left"/>
+        </DataTemplate>
+    </UserControl.Resources>-->
+    
+    <!--<TabControl>
+        <TabItem Header="ИГРИ">-->
+        <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="/MathGame;component/Resources/background_image.png"/>
         </Grid.Background>
@@ -28,7 +37,7 @@
                     <ComboBoxItem IsEnabled="False" IsSelected="True">Избери игра</ComboBoxItem>
                     <ComboBoxItem Content="МЕМОРИ"></ComboBoxItem>
                     <ComboBoxItem Content="БЕСЕНИЦА"></ComboBoxItem>
-                    <ComboBoxItem Content="КУИЗ"></ComboBoxItem>
+                    <ComboBoxItem Content="ВЪПРОСИ"></ComboBoxItem>
                 </ComboBox.Items>
             </ComboBox>
             <Button DockPanel.Dock="Top" Margin="10" Click="Play" Background="LightSeaGreen" Foreground="Orange" FontSize="22" FontStyle="Italic" FontFamily="Georgia" Height="50">СТАРТ</Button>
@@ -43,4 +52,27 @@
             </WrapPanel>
         </StackPanel>
     </Grid>
+        <!--</TabItem>
+        <TabItem HorizontalAlignment="Right" Header="ИГРАЧИ">
+            <DockPanel>
+                <DockPanel.Background>
+                    <ImageBrush ImageSource="/MathGame;component/Resources/background_image.png" Stretch="UniformToFill"/>
+                </DockPanel.Background>
+
+                <Border BorderThickness="1" Background="#A50C0C0C">
+                    <StackPanel TextBlock.TextAlignment="Left" TextBlock.FontSize="20" TextBlock.Foreground="Aquamarine" TextBlock.FontFamily="Georgia" Background="NavajoWhite">
+                        <StackPanel Width="auto">
+                        <Label>Име</Label>
+                        <TextBox Name="Name"></TextBox>
+                        </StackPanel>
+                    <Button x:Name="Add" Content="ДОБАВИ" Width="90" Height="50" Click="Add_Click" Background="LightSeaGreen" Foreground="DarkBlue"/>
+
+                        <ListView ItemTemplate="{StaticResource usersItemTemplate}" ItemsSource="{Binding Path=Users}" Background="NavajoWhite" Height="auto">
+                        <ListView x:Name="users" Background="NavajoWhite" Height="auto">
+                        </ListView>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </TabItem>
+    </TabControl>-->
 </UserControl>
