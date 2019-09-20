@@ -13,7 +13,7 @@
     public class QuizGameViewModel : GameViewModel
     {
         private readonly IQuizService quizService;
-        private readonly IUserService userService;
+        //private readonly IUserService userService;
         private ICommand createQuizCommand;
         private List<QuizQuestion> quiz;
         private int questionId;
@@ -22,10 +22,10 @@
         public GameInfoViewModel GameInfo { get; set; }
         public TimerViewModel Timer { get; set; }
 
-        public QuizGameViewModel(IQuizService quizService, IUserService userService)
+        public QuizGameViewModel(IQuizService quizService)
         {
             this.quizService = quizService;
-            this.userService = userService;
+            
             this.SetupGame();
             this.CreateQuiz();
         }

@@ -15,6 +15,7 @@
         public QuizGameView()
         {
             InitializeComponent();
+
             this.DataContext =
                 Bootstraper.Container.Resolve<QuizGameViewModel>();
             this.game = this.DataContext as QuizGameViewModel;

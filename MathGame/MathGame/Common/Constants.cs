@@ -21,9 +21,9 @@
 
         //MemoryGame
         public const int slidesToMatch = 6;
-        public const int memoAttempts = 3;
-        public const int pointAward = 75;
-        public const int pointLoss = 15;
+        public const int memoAttempts = 4;
+        public const int pointAward = 100;
+        public const int pointLoss = 50;
         public const int playSeconds = 1;
         public const int peekSeconds = 2;
         public const int openSeconds = 5;

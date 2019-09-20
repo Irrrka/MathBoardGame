@@ -1,79 +1,85 @@
-﻿namespace MathGame.ViewModels.Common
-{
-    using MathGame.Data;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
+﻿//namespace MathGame.ViewModels.Common
+//{
+//    using MathGame.Data;
+//    using System;
+//    using System.Collections.ObjectModel;
+//    using System.Linq;
+//    using System.Windows.Controls;
 
-    public class UserViewModel : NotifyPropertyChanged
-    {
-        private string name;
-        private int scores;
+//    public class UserViewModel : NotifyPropertyChanged
+//    {
+//        //private MainWindow main;
 
-        public UserViewModel()
-        {
-            this.Users = this.GetAllUsers();
-        }
+//        private string name;
+//        private int scores;
 
-        private ObservableCollection<User> GetAllUsers()
-        {
-            using (var db = new AppDBContext())
-            {
-                this.Users = new ObservableCollection<User>(db.Users.ToList());
-            }
+//        public UserViewModel(
+//            //MainWindow main
+//            )
+//        {
+//            //this.main = main;
+//            this.Users = this.GetAllUsers();
+//        }
 
-            return this.Users;
-        }
+//        private ObservableCollection<User> GetAllUsers()
+//        {
+//            using (var db = new AppDBContext())
+//            {
+//                this.Users = new ObservableCollection<User>(db.Users.ToList());
+//            }
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+//            return this.Users;
+//        }
 
-        public int Scores
-        {
-            get
-            {
-                return this.scores;
-            }
-            set
-            {
-                this.scores = value;
-                OnPropertyChanged();
-            }
-        }
+//        public string Name
+//        {
+//            get
+//            {
+//                return this.name;
+//            }
+//            set
+//            {
+//                this.name = value;
+//                OnPropertyChanged("Name");
+//            }
+//        }
 
-        public ObservableCollection<User> Users { get; set; }
+//        public int Scores
+//        {
+//            get
+//            {
+//                return this.scores;
+//            }
+//            set
+//            {
+//                this.scores = value;
+//                OnPropertyChanged();
+//            }
+//        }
 
-        public void Add(string name)
-        {
-            using (AppDBContext dbContext = new AppDBContext())
-            {
-                User user = new User();
-                user.Name = name;
+//        public ObservableCollection<User> Users { get; set; }
+
+//        public void Add(string name)
+//        {
+//            using (AppDBContext dbContext = new AppDBContext())
+//            {
+//                User user = new User();
+//                user.Name = name;
                 
-                dbContext.Users.Add(user);
-                dbContext.SaveChanges();
-            }
-        }
+//                dbContext.Users.Add(user);
+//                dbContext.SaveChanges();
+//            }
+//        }
 
-        public void Update(string name, int scores)
-        {
-            using (AppDBContext dbContext = new AppDBContext())
-            {
-                var user = dbContext.Users.FirstOrDefault(u => u.Name == name);
-                dbContext.Users.Attach(user);
-                user.Scores = scores;
-                dbContext.SaveChanges();
-            }
-        }
-    }
-}
+//        public void Update(string name, int scores)
+//        {
+//            using (AppDBContext dbContext = new AppDBContext())
+//            {
+//                var user = dbContext.Users.FirstOrDefault(u => u.Name == name);
+//                dbContext.Users.Attach(user);
+//                user.Scores = scores;
+//                dbContext.SaveChanges();
+//            }
+//        }
+//    }
+//}

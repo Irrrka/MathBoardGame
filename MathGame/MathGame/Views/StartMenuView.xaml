@@ -12,10 +12,10 @@
             <Button Content="{Binding Path=Name}" Width="auto" HorizontalAlignment="Left"/>
         </DataTemplate>
     </UserControl.Resources>-->
-    
+
     <!--<TabControl>
         <TabItem Header="ИГРИ">-->
-        <Grid>
+    <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="/MathGame;component/Resources/background_image.png"/>
         </Grid.Background>
@@ -52,13 +52,12 @@
             </WrapPanel>
         </StackPanel>
     </Grid>
-        <!--</TabItem>
+    <!--</TabItem>
         <TabItem HorizontalAlignment="Right" Header="ИГРАЧИ">
             <DockPanel>
                 <DockPanel.Background>
                     <ImageBrush ImageSource="/MathGame;component/Resources/background_image.png" Stretch="UniformToFill"/>
                 </DockPanel.Background>
-
                 <Border BorderThickness="1" Background="#A50C0C0C">
                     <StackPanel TextBlock.TextAlignment="Left" TextBlock.FontSize="20" TextBlock.Foreground="Aquamarine" TextBlock.FontFamily="Georgia" Background="NavajoWhite">
                         <StackPanel Width="auto">
@@ -66,7 +65,6 @@
                         <TextBox Name="Name"></TextBox>
                         </StackPanel>
                     <Button x:Name="Add" Content="ДОБАВИ" Width="90" Height="50" Click="Add_Click" Background="LightSeaGreen" Foreground="DarkBlue"/>
-
                         <ListView ItemTemplate="{StaticResource usersItemTemplate}" ItemsSource="{Binding Path=Users}" Background="NavajoWhite" Height="auto">
                         <ListView x:Name="users" Background="NavajoWhite" Height="auto">
                         </ListView>

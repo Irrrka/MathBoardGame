@@ -99,8 +99,8 @@
             </Grid>
         </DockPanel>
         <StackPanel Height="auto" Width="auto" Margin="5,40,597,310">
-            <TextBlock Text="{Binding Timer.Time, StringFormat=Време: {0}}" Foreground="DarkBlue" FontSize="24" />
-            <TextBlock Text="{Binding GameInfo.Scores, StringFormat=Точки: {0}}" Foreground="DarkBlue" FontSize="24" />
+            <TextBlock Text="{Binding Timer.Time, StringFormat=Време: {0}}" Foreground="Aquamarine" FontSize="24" />
+            <TextBlock Text="{Binding GameInfo.Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="24" />
         </StackPanel>
     </Grid>
 </UserControl>

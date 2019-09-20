@@ -22,8 +22,8 @@
         <Grid>
             <Grid>
                 <WrapPanel Margin="125,10,5,5" Height="auto" Width="auto">
-                    <TextBlock Margin="5" Text="{Binding Timer.Time, StringFormat=Време: {0}}" Foreground="DarkBlue" FontSize="24" />
-                    <TextBlock Margin="5" Text="{Binding GameInfo.Scores, StringFormat=Точки: {0}}" Foreground="DarkBlue" FontSize="24" />
+                    <TextBlock Margin="5" Text="{Binding Timer.Time, StringFormat=Време: {0}}" Foreground="Aquamarine" FontSize="24" />
+                    <TextBlock Margin="5" Text="{Binding GameInfo.Scores, StringFormat=Точки: {0}}" Foreground="Aquamarine" FontSize="24" />
                 </WrapPanel>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="245" Margin="125,45,0,0" VerticalAlignment="Top" Width="555">
                     <TextBlock x:Name="currQuestion" Text="{Binding CurrentQuestion}"  TextWrapping="Wrap" TextAlignment="Center" TextBlock.FontFamily="Georgia" FontSize="40" FontStyle="Italic" Foreground="DarkBlue" Background="NavajoWhite" Margin="0,0,0,-10"/>

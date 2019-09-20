@@ -1,7 +1,13 @@
-﻿namespace MathGame.ViewModels
-{
-    using MathGame.ViewModels.HangmanGame;
+﻿using MathGame.ViewModels.HangmanGame;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static MathGame.ViewModels.GameViewModel;
 
+namespace MathGame.ViewModels
+{
     public class StartMenuViewModel
     {
         private MainWindow mainWindow;
@@ -24,7 +30,7 @@
             {
                 newGame = new MemoryGameViewModel();
             }
-            if(quizGameName.Contains(gameString))
+            if (quizGameName.Contains(gameString))
             {
                 newGame = new QuizGameViewModel();
             }

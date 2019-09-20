@@ -2,19 +2,34 @@
 {
     using MathGame.Common;
     using System;
+    using System.Windows.Input;
 
     public class MemoryGameViewModel : GameViewModel
     {
+        private ICommand setupCommand;
+
         public MemoryGameViewModel()
         {
-            this.SetupGame();
+            //this.SetupGame();
         }
 
         public ImageCollectionViewModel Slides { get; set; }
         public GameInfoViewModel GameInfo { get; set; }
         public TimerViewModel Timer { get; set; }
 
-        private void SetupGame()
+        public ICommand SetupCommand
+        {
+            get
+            {
+                if (this.setupCommand == null)
+                {
+                    this.setupCommand = new RelayCommand<object>(SetupGame);
+                }
+                return this.setupCommand;
+            }
+        }
+
+        private void SetupGame(object data=null)
         {
           this.Slides = new ImageCollectionViewModel();
           this.Timer = new TimerViewModel(new TimeSpan(0, 0, Constants.playSeconds));
@@ -22,7 +37,6 @@
 
           this.GameInfo.ClearInfo();
 
-           //TODO COMMAND+Service
            this.Slides.CreateSlides("Resources/Images");
            this.Slides.Memorize();
 
@@ -70,7 +84,7 @@
 
         public void Restart()
         {
-            this.SetupGame();
+           this.SetupGame();
         }
 
     }

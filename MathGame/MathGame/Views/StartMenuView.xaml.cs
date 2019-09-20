@@ -3,21 +3,21 @@
     using Autofac;
     using MathGame.Data;
     using MathGame.ViewModels;
-    using MathGame.ViewModels.Common;
-    using System.Collections.ObjectModel;
     using System.Windows;
     using System.Windows.Controls;
 
-    /// <summary>
-    /// Interaction logic for StartMenuView.xaml
-    /// </summary>
     public partial class StartMenuView : UserControl
     {
+
+        //private StartViewModel game;
 
         public StartMenuView()
         {
             InitializeComponent();
+            //this.Users = this.game.GetUsers();
         }
+
+        //ObservableCollection<User> Users { get; set; }
 
         private void Play(object sender, RoutedEventArgs e)
         {
@@ -49,23 +49,25 @@
         }
 
         #region Users
-        //private void Add_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var db = new UserViewModel();
-        //    this.DataContext = db as UserViewModel;
-        //    var name3 = Name.Text;
-        //    db.Add(name3);
-        //}
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
 
-        //private void GetUsers()
-        //{
-        //    var db = new UserViewModel();
-        //    this.DataContext = db as UserViewModel;
-        //    foreach (var user in db.Users)
-        //    {
-        //        users.Items.Add(user.Name);
-        //    }
-        //}
+            //var db = new UserViewModel();
+            //this.DataContext = db as UserViewModel;
+            ////var db = DataContext as StartViewModel;
+            //var name = Name.Text;
+            //this.game.Add(name);
+        }
+
+        private void GetUsers()
+        {
+            //var db = new UserViewModel();
+            //this.DataContext = db as UserViewModel;
+            //foreach (var user in db.Users)
+            //{
+            //    users.Items.Add(user.Name);
+            //}
+        }
         #endregion
 
     }

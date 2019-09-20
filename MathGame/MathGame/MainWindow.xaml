@@ -7,7 +7,6 @@
         xmlns:local="clr-namespace:MathGame"
         xmlns:viewmodels="clr-namespace:MathGame.ViewModels"
         xmlns:viewmodelsh="clr-namespace:MathGame.ViewModels.HangmanGame"
-        xmlns:viewmodelc="clr-namespace:MathGame.ViewModels.Common"
         xmlns:views="clr-namespace:MathGame.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
@@ -22,15 +21,15 @@
         <DataTemplate DataType="{x:Type viewmodelsh:HangmanGameViewModel}">
             <views:HangmanGameView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodelc:StartViewModel}">
+        <!--<DataTemplate DataType="{x:Type viewmodelc:StartViewModel}">
             <views:StartMenuView DataContext="{Binding}"/>
-        </DataTemplate>
+        </DataTemplate>-->
         <DataTemplate DataType="{x:Type viewmodels:StartMenuViewModel}">
             <views:StartMenuView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodelc:UserViewModel}">
+        <!--<DataTemplate DataType="{x:Type viewmodelc:UserViewModel}">
             <views:StartMenuView DataContext="{Binding}"/>
-        </DataTemplate>
+        </DataTemplate>-->
     </Window.Resources>
 
     <Grid>
